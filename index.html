@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-DX9MLZna.js"></script>
+    <script type="module" crossorigin src="./assets/index-xxjNaYng.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-DyZlaoaH.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CJcS869o.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -31,7 +31,7 @@
       <section id="menu" class="screen" aria-labelledby="title">
         <div class="menu-grid">
           <div class="title-block">
-            <p class="eyebrow">BIRCH COUNTY · DAY 19</p>
+            <p class="eyebrow menu-edition">BIRCH COUNTY · DAY 19 <span class="testing-badge">PLAYTEST</span></p>
             <h1 id="title">DARK<br /><span>SIGNAL</span></h1>
             <p class="tagline">Every call for help is heard by more than the living.</p>
             <aside id="platform-notice" role="note" aria-labelledby="platform-notice-title">
@@ -63,7 +63,7 @@
               <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
               <div class="menu-game-modes" role="group" aria-label="Game modes"><button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button><button id="menu-duel-open" class="primary-btn duel-mode-btn">1 VS 1 DUEL</button></div>
               <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>ONLINE TRANSMISSION</strong><small>Join a squad or return to your last session</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
-              <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Configure your controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Graphics &amp; controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             </div>
             <p id="best-score" class="best-score"></p>
           </div>
@@ -79,7 +79,7 @@
           <div class="pause-actions">
             <button id="resume-btn" class="menu-action action-resume"><span class="action-symbol" aria-hidden="true">▷</span><span class="action-copy"><strong>CONTINUE</strong><small>Return to the signal</small></span><span class="action-arrow" aria-hidden="true">→</span></button>
             <button id="pause-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>MAKE GAME ONLINE</strong><small>Open a private squad frequency</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
-            <button id="settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Tune your controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            <button id="settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Graphics &amp; controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             <button id="pause-menu-btn" class="menu-action action-menu"><span class="action-symbol" aria-hidden="true">⌂</span><span class="action-copy"><strong>MAIN MENU</strong><small>Progress saved on this device</small></span><span class="action-arrow" aria-hidden="true">←</span></button>
           </div>
         </div>
@@ -119,6 +119,8 @@
         <div class="glass dialog settings-dialog">
           <p class="eyebrow">OPERATOR PREFERENCES</p>
           <h2 id="settings-title">SETTINGS</h2>
+          <label class="setting-toggle" for="graphics-preset"><span>Graphics</span><select id="graphics-preset" aria-describedby="graphics-note"></select></label>
+          <p id="graphics-note" class="control-note">auto keeps the original device settings. Lower presets improve performance; higher presets sharpen the image and shadows. Applies immediately.</p>
           <div id="telegram-display-settings" hidden>
             <button id="telegram-fullscreen" class="secondary-btn" type="button">Enter fullscreen</button>
             <p id="telegram-mouse-note" class="control-note" hidden>Mouse capture is unavailable in this Telegram client. Drag on the game to look, or open it in your browser for full mouse control.</p>
