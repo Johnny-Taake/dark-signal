@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="theme-color" content="#090d0b" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="DARK SIGNAL" />
+    <meta name="description" content="DARK SIGNAL — an endless browser-based 3D monster survival shooter." />
+    <title>DARK SIGNAL</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-DmE77Rjl.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-BM1CBYmm.css">
+  </head>
+  <body>
+    <main id="game" aria-label="DARK SIGNAL — 3D shooter">
+      <canvas id="scene"></canvas>
+
+      <section id="loading" class="screen screen--visible" aria-live="polite">
+        <div class="boot-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <p class="eyebrow">EMERGENCY RELAY 06</p>
+        <h1>DARK<br /><span>SIGNAL</span></h1>
+        <p id="loading-status">Opening emergency frequency…</p>
+      </section>
+
+      <section id="menu" class="screen" aria-labelledby="title">
+        <div class="menu-grid">
+          <div class="title-block">
+            <p class="eyebrow">BIRCH COUNTY · DAY 19</p>
+            <h1 id="title">DARK<br /><span>SIGNAL</span></h1>
+            <p class="tagline">Every call for help is heard by more than the living.</p>
+            <div class="controls-hint desktop-only">
+              <span><b>WASD</b> move</span><span><b>MOUSE</b> look</span>
+              <span><b>LMB</b> fire / wide slash</span><span><b>R</b> reload</span>
+              <span><b>1 / 2 / 3 / 4</b> katana / pistol / AR / shotgun</span><span><b>WHEEL</b> switch weapon</span>
+              <span><b>B</b> AR fire mode</span><span><b>RMB</b> aim / katana guard</span>
+              <span><b>V</b> bayonet / heavy katana strike (×1.5, single target)</span><span><b>SPACE</b> jump</span>
+              <span><b>HOLD G</b> aim grenade; release to throw</span>
+              <span><b>SHIFT / C</b> sprint / crouch</span><span><b>F</b> flashlight</span>
+            </div>
+            <div class="controls-hint touch-only">
+              <span><b>LEFT STICK</b> move</span><span><b>SWIPE</b> look</span>
+              <span><b>FIRE / AIM</b> combat</span><span><b>SWAP</b> weapons</span>
+              <span><b>JUMP / CROUCH</b> movement</span><span><b>BLOCK</b> directional guard</span>
+              <span><b>FIRE</b> wide slash · <b>↓</b> heavy strike (×1.5, single target)</span>
+              <span><b>LIGHT / PAUSE</b> field controls</span>
+              <span><b>HOLD GRENADE</b> aim; release to throw</span>
+            </div>
+          </div>
+          <div class="briefing glass">
+            <p class="stamp">“LONG CALL” PROTOCOL</p>
+            <p class="mission-summary">Hold the relay against attacking monsters. Each transmission draws more. Between pulses, the emergency unit supplies ammunition. In a squad, fallen operators respawn after 10 seconds while a teammate survives. If everyone falls, the transmission ends; the host restarts or returns the whole squad to the menu.</p>
+            <div class="menu-actions">
+              <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
+              <button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button>
+              <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>ONLINE TRANSMISSION</strong><small>Join a squad or return to your last session</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Configure your controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            </div>
+            <p id="best-score" class="best-score"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pause" class="screen compact-screen" aria-labelledby="pause-title">
+        <div class="glass dialog">
+          <p class="eyebrow">TRANSMISSION SUSPENDED</p>
+          <h2 id="pause-title">DEAD AIR</h2>
+          <p>The carrier is holding. Return when you are ready.</p>
+          <div id="pause-online-room" class="pause-room-code" hidden><span>ROOM CODE</span><button id="pause-online-copy" type="button" aria-label="Copy room code"><strong id="pause-online-code">------</strong><small>Copy code</small></button></div>
+          <div class="pause-actions">
+            <button id="resume-btn" class="menu-action action-resume"><span class="action-symbol" aria-hidden="true">▷</span><span class="action-copy"><strong>CONTINUE</strong><small>Return to the signal</small></span><span class="action-arrow" aria-hidden="true">→</span></button>
+            <button id="pause-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>MAKE GAME ONLINE</strong><small>Open a private squad frequency</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            <button id="settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Tune your controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            <button id="pause-menu-btn" class="menu-action action-menu"><span class="action-symbol" aria-hidden="true">⌂</span><span class="action-copy"><strong>MAIN MENU</strong><small>Progress saved on this device</small></span><span class="action-arrow" aria-hidden="true">←</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section id="online" class="screen compact-screen" aria-labelledby="online-title">
+        <div class="glass dialog online-dialog">
+          <div class="frequency-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <p id="online-mode" class="eyebrow">PRIVATE SQUAD LINK</p>
+          <h2 id="online-title">OPEN FREQUENCY</h2>
+          <p class="online-intro">A light in the static. Up to four operators, one transmission.</p>
+          <form id="online-host-form" class="frequency-form">
+            <label for="online-password">HOST ACCESS PASSWORD</label>
+            <div><input id="online-password" type="password" maxlength="128" autocomplete="off" placeholder="Enter access password" required /><button class="secondary-btn" type="submit">GO ONLINE</button></div>
+          </form>
+          <form id="online-join-form" class="frequency-form">
+            <label for="online-code">JOIN A FREQUENCY</label>
+            <div><input id="online-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="6-digit code" required /><button class="secondary-btn" type="submit">JOIN SQUAD</button></div>
+          </form>
+          <div id="online-connected" hidden>
+            <div class="frequency-code"><div><label for="online-room-code">ROOM CODE · SHARE WITH YOUR SQUAD</label><input id="online-room-code" value="------" readonly data-selectable aria-label="Room code" spellcheck="false" /></div><button id="online-copy" type="button" class="secondary-btn">Copy code</button></div>
+            <p id="online-copy-status" class="frequency-note" role="status" aria-live="polite">Share this code to invite another operator.</p>
+            <ul id="online-players" aria-label="Connected operators"></ul>
+            <p class="frequency-note">Friendly fire: grenades only. The world keeps moving while menus are open.</p>
+          </div>
+          <p id="online-status" role="status">Start a solo transmission to host, or enter a friend's room code.</p>
+          <button id="online-rejoin" class="secondary-btn" hidden>REJOIN LAST SESSION</button>
+          <div class="online-footer"><button id="online-back" class="text-btn">Back</button><button id="online-solo" class="text-btn" hidden>Continue this run solo</button><button id="online-chat-open" class="text-btn" hidden>Chat</button>
+            <button id="online-resume" class="primary-btn" hidden>RESUME TRANSMISSION</button></div>
+        </div>
+      </section>
+
+      <section id="settings" class="screen compact-screen" aria-labelledby="settings-title">
+        <div class="glass dialog settings-dialog">
+          <p class="eyebrow">OPERATOR PREFERENCES</p>
+          <h2 id="settings-title">SETTINGS</h2>
+          <div class="operator-customization">
+            <label class="setting-toggle nickname-setting" for="player-nickname"><span>Nickname</span><input id="player-nickname" type="text" maxlength="24" autocomplete="nickname" placeholder="Operator name" data-selectable /></label>
+            <label class="setting-toggle" for="operator-skin"><span>Operator skin</span><select id="operator-skin"></select></label>
+            <canvas id="operator-preview" tabindex="0" role="img" aria-label="Operator preview. Drag or use arrow keys to rotate."></canvas>
+            <div class="preview-caption"><span>Drag to rotate</span><label for="preview-weapon">Preview weapon <select id="preview-weapon"><option value="pistol">Pistol</option><option value="ar">AR</option><option value="shotgun">Shotgun</option><option value="katana">Katana</option></select></label></div>
+          </div>
+          <label class="setting-row desktop-only" for="mouse-sensitivity">Mouse sensitivity <output id="mouse-sensitivity-value">1.00×</output><input id="mouse-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+          <details class="binding-settings desktop-only"><summary>Keyboard &amp; mouse bindings</summary><p>Choose an action, then press a key or mouse button. Esc cancels and always remains available for pause. Conflicting bindings swap.</p><div id="key-bindings"></div><button id="bindings-reset" class="text-btn">Reset bindings</button></details>
+          <details class="gamepad-settings"><summary>Gamepad · experimental</summary>
+            <label class="setting-toggle" for="gamepad-enabled"><span>Enable gamepad</span><input id="gamepad-enabled" type="checkbox" /></label>
+            <label class="setting-toggle" for="gamepad-vibration-enabled"><span>Vibration</span><input id="gamepad-vibration-enabled" type="checkbox" aria-describedby="gamepad-vibration-note" /></label>
+            <p id="gamepad-vibration-note" class="control-note">Weapon and damage feedback while using a gamepad. Requires a controller and browser with rumble support.</p>
+            <label class="setting-row" for="gamepad-sensitivity">Look sensitivity <output id="gamepad-sensitivity-value">1.00×</output><input id="gamepad-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+            <p>Left stick: move · Right stick: look · RT: fire / wide slash · LT: aim / guard · A: jump · B: crouch · X: reload · Y: next weapon · LB: hold grenade, release to throw · RB: bayonet / heavy katana strike (×1.5, single target) · L3: sprint · R3: flashlight · D-pad up: fire mode · D-pad left/right: weapons · Start: pause · Select: squad.</p>
+            <p>Menus: D-pad up/down to focus, left/right to adjust, A to select, B to go back. Enable gamepad above, then connect a standard controller and press a button.</p>
+          </details>
+          <div id="touch-settings" hidden>
+            <label class="setting-toggle" for="vibration-enabled"><span>Vibration</span><input id="vibration-enabled" type="checkbox" aria-describedby="vibration-note" /></label>
+            <p id="vibration-note" class="control-note">Weapon and damage feedback, when supported by your phone and browser.</p>
+            <label class="setting-row" for="touch-sensitivity">Touch sensitivity <output id="touch-sensitivity-value">1.00×</output><input id="touch-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+            <label class="setting-toggle" for="gyro-mode"><span>Gyroscope</span><select id="gyro-mode"><option value="off">Off</option><option value="aim">While aiming</option><option value="always">Always on</option></select></label>
+            <label class="setting-row" for="gyro-sensitivity">Gyroscope sensitivity <output id="gyro-sensitivity-value">1.00×</output><input id="gyro-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+            <button id="edit-controls" class="secondary-btn">Arrange touch controls</button>
+          </div>
+          <p id="settings-status" class="settings-status" role="status">Preferences are saved on this device.</p>
+          <div class="settings-actions"><button id="settings-reset" class="text-btn">Reset preferences</button><button id="settings-back" class="primary-btn">BACK</button></div>
+        </div>
+      </section>
+      <section id="layout-editor" hidden aria-label="Touch layout editor">
+        <div class="glass layout-toolbar">
+          <p id="layout-instruction">Drag a button or joystick to move it. Select to resize.</p>
+          <label for="control-size"><span id="control-name">Select a control</span><output id="control-size-value">100%</output></label>
+          <input id="control-size" type="range" min="75" max="135" value="100" step="5" disabled />
+          <div><button id="layout-reset" class="text-btn">Reset layout</button><button id="layout-cancel" class="text-btn">Cancel</button><button id="layout-done" class="secondary-btn">Done</button></div>
+        </div>
+      </section>
+
+      <section id="death" class="screen compact-screen" aria-labelledby="death-title">
+        <div class="glass dialog death-dialog">
+          <p class="eyebrow">SIGNAL LOST</p>
+          <h2 id="death-title">OPERATOR NOT RESPONDING</h2>
+          <p id="death-summary"></p>
+          <div class="stat-grid">
+            <div><strong id="final-wave">0</strong><span>wave</span></div>
+            <div><strong id="final-kills">0</strong><span>monsters</span></div>
+            <div><strong id="final-score">0</strong><span>score</span></div>
+          </div>
+          <button id="restart-btn" class="primary-btn">REPEAT SIGNAL</button>
+          <button id="death-menu-btn" class="text-btn">Main menu</button>
+        </div>
+      </section>
+
+      <section id="respawn" class="respawn-overlay" hidden aria-label="Respawn countdown">
+        <div class="glass"><p class="eyebrow">OPERATOR DOWN</p><strong id="respawn-count">10</strong><p id="respawn-message" role="status">Returning to the squad…</p></div>
+      </section>
+
+      <section id="hud" aria-label="Game interface">
+        <div class="top-hud">
+          <div class="wave-box">
+            <span>SIGNAL</span>
+            <strong id="wave-label">01</strong>
+          </div>
+          <div class="objective-box">
+            <span id="phase-label">TRANSMISSION</span>
+            <strong id="objective-label">AWAITING PULSE</strong>
+            <div class="signal-track"><i id="signal-progress"></i></div>
+          </div>
+          <div class="score-box">
+            <span>SCORE</span>
+            <strong id="score-label">000000</strong>
+          </div>
+        </div>
+
+        <div id="story-card" class="story-card">
+          <span id="story-tag">RELAY LOG</span>
+          <strong id="story-title">FREQUENCY FOUND</strong>
+          <p id="story-text"></p>
+        </div>
+
+        <div id="boss-bars" class="boss-bars" aria-live="polite"></div>
+        <div id="status-effects" class="status-effects" aria-live="polite"></div>
+
+        <div id="hit-marker" class="hit-marker" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div id="crosshair" class="crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+        <div id="damage-vignette" aria-hidden="true"></div>
+        <div id="wave-flash" aria-hidden="true"></div>
+
+        <div class="bottom-hud">
+          <div class="health-panel">
+            <div id="armor-panel" class="armor-panel">
+              <div><span>ARMOR</span><strong id="armor-value">0</strong></div>
+              <div class="armor-track"><i id="armor-bar"></i></div>
+            </div>
+            <div class="health-row"><span>CONDITION</span><strong id="health-label">100</strong></div>
+            <div class="health-track"><i id="health-bar"></i></div>
+            <small id="stamina-label">PULSE STABLE</small>
+          </div>
+
+          <canvas id="radar" width="152" height="152" aria-label="Monster radar; north is up, the arrow shows your heading"></canvas>
+
+          <div class="ammo-panel">
+            <span id="weapon-label">SERVICE PISTOL // 9MM</span>
+            <div class="ammo-count"><strong id="ammo-label">12</strong><i>/</i><b id="reserve-label">72</b></div>
+            <span class="grenade-inventory"><img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20%3e%3ccircle%20cx='11'%20cy='13'%20r='9'%20/%3e%3cpath%20d='M14.35%204.65%2016.3%202.7a2.41%202.41%200%200%201%203.4%200l1.6%201.6a2.4%202.4%200%200%201%200%203.4l-1.95%201.95'%20/%3e%3cpath%20d='m22%202-1.5%201.5'%20/%3e%3c/svg%3e" alt="Grenades" /><b id="grenade-count">2</b><kbd>G</kbd></span>
+            <small id="reload-label">SEMI-AUTOMATIC</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="mobile-controls" aria-label="Touch controls">
+        <div id="move-zone" class="stick-zone"><span>MOVE</span></div>
+        <button id="mobile-pause" class="round-action pause-action" aria-label="Pause game">Ⅱ</button>
+        <button id="mobile-light" class="round-action light-action active" aria-label="Toggle flashlight">LIGHT</button>
+        <button id="mobile-reload" class="round-action reload-action" aria-label="Reload">R</button>
+        <button id="mobile-swap" class="round-action swap-action" aria-label="Switch weapon">1/2</button>
+        <button id="mobile-mode" class="round-action mode-action" aria-label="Switch AR fire mode">MODE</button>
+        <button id="mobile-aim" class="round-action aim-action" aria-label="Toggle aim" aria-pressed="false">AIM</button>
+        <button id="mobile-melee" class="round-action melee-action" aria-label="Bayonet attack">STAB</button>
+        <button id="mobile-jump" class="round-action jump-action" aria-label="Jump">JUMP</button>
+        <button id="mobile-crouch" class="round-action crouch-action" aria-label="Toggle crouch" aria-pressed="false">CROUCH</button>
+        <button id="mobile-grenade" class="round-action grenade-action" aria-label="Hold to aim grenade, release to throw"></button>
+        <button id="mobile-fire" class="round-action fire-action" aria-label="Fire">FIRE</button>
+      </section>
+
+      <div id="chat-feed" role="log" aria-live="polite" aria-label="Squad chat"></div>
+      <button id="mobile-chat" class="round-action" aria-label="Open squad chat" hidden>⌨</button>
+      <form id="chat-form" hidden autocomplete="off">
+        <input id="chat-input" type="text" maxlength="120" placeholder="Message…" aria-label="Chat message, up to 120 characters" data-selectable enterkeyhint="send" autocapitalize="sentences" />
+        <button type="submit" aria-label="Send message">➤</button><button id="chat-close" type="button" aria-label="Close chat">×</button>
+      </form>
+      <div id="toast" role="status" aria-live="polite"></div>
+      <div id="rotate-device"><svg class="rotate-icon" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M14 56V20a9 9 0 0 1 9-9h34a9 9 0 0 1 9 9v36" stroke-dasharray="7 5" opacity=".3"/>
+        <path d="M33 18h14" opacity=".3"/>
+        <rect x="14" y="64" width="94" height="48" rx="9"/>
+        <path d="M100 82v12M78 18a23 23 0 0 1 28 27m-9-6 9 9 8-10"/>
+      </svg><strong>Rotate your device</strong><small>The game is designed for landscape mode</small></div>
+    </main>
+
+    <noscript>JavaScript is required to run the game.</noscript>
+  </body>
+</html>
