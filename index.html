@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-DknU1fac.js"></script>
+    <script type="module" crossorigin src="./assets/index-AHABtsfH.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-Ohw9tByU.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-IBqPsvkS.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -61,7 +61,7 @@
             <p class="mission-summary">Hold the relay against attacking monsters. Each transmission draws more. Between pulses, the emergency unit supplies ammunition. In a squad, fallen operators respawn after 10 seconds while a teammate survives. If everyone falls, the transmission ends; the host restarts or returns the whole squad to the menu.</p>
             <div class="menu-actions">
               <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
-              <button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button>
+              <div class="menu-game-modes" role="group" aria-label="Game modes"><button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button><button id="menu-duel-open" class="primary-btn duel-mode-btn">1 VS 1 DUEL</button></div>
               <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>ONLINE TRANSMISSION</strong><small>Join a squad or return to your last session</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
               <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Configure your controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             </div>
@@ -92,8 +92,9 @@
           <h2 id="online-title">OPEN FREQUENCY</h2>
           <p class="online-intro">A light in the static. Up to four operators, one transmission.</p>
           <form id="online-host-form" class="frequency-form">
-            <label for="online-password">HOST ACCESS PASSWORD</label>
-            <div><input id="online-password" type="password" maxlength="128" autocomplete="off" placeholder="Enter access password" required /><button class="secondary-btn" type="submit">GO ONLINE</button></div>
+            <label id="online-host-label">CREATE A ROOM</label>
+            <label id="online-password-label" for="online-password">HOST ACCESS PASSWORD</label>
+            <div><input id="online-password" type="password" maxlength="128" autocomplete="off" placeholder="Enter access password" required /><button id="online-host-submit" class="secondary-btn" type="submit">GO ONLINE</button></div>
           </form>
           <form id="online-join-form" class="frequency-form">
             <label for="online-code">JOIN A FREQUENCY</label>
@@ -103,7 +104,7 @@
             <div class="frequency-code"><div><label for="online-room-code">ROOM CODE · SHARE WITH YOUR SQUAD</label><input id="online-room-code" value="------" readonly data-selectable aria-label="Room code" spellcheck="false" /></div><button id="online-copy" type="button" class="secondary-btn">Copy code</button></div>
             <p id="online-copy-status" class="frequency-note" role="status" aria-live="polite">Share this code to invite another operator.</p>
             <ul id="online-players" aria-label="Connected operators"></ul>
-            <p class="frequency-note">Friendly fire: grenades only. The world keeps moving while menus are open.</p>
+            <p id="online-rules" class="frequency-note">Friendly fire: grenades only. The world keeps moving while menus are open.</p>
           </div>
           <p id="online-status" role="status">Start a solo transmission to host, or enter a friend's room code.</p>
           <button id="online-rejoin" class="secondary-btn" hidden>REJOIN LAST SESSION</button>
@@ -111,6 +112,8 @@
             <button id="online-resume" class="primary-btn" hidden>RESUME TRANSMISSION</button></div>
         </div>
       </section>
+
+      <div id="duel-banner" class="duel-banner" role="status" aria-live="polite" hidden><small id="duel-banner-tag">1 VS 1</small><strong id="duel-banner-title"></strong><span id="duel-banner-detail"></span><div id="duel-votes" hidden><button id="duel-vote-0" class="secondary-btn" type="button"></button><button id="duel-vote-1" class="secondary-btn" type="button"></button></div><div id="duel-coin" hidden aria-label="Weapon coin toss"></div></div>
 
       <section id="settings" class="screen compact-screen" aria-labelledby="settings-title">
         <div class="glass dialog settings-dialog">
