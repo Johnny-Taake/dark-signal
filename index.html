@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-xxjNaYng.js"></script>
+    <script type="module" crossorigin src="./assets/index-NEuTTiQw.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CJcS869o.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-er9T3y_9.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -60,6 +60,7 @@
             <p class="stamp">“LONG CALL” PROTOCOL</p>
             <p class="mission-summary">Hold the relay against attacking monsters. Each transmission draws more. Between pulses, the emergency unit supplies ammunition. In a squad, fallen operators respawn after 10 seconds while a teammate survives. If everyone falls, the transmission ends; the host restarts or returns the whole squad to the menu.</p>
             <div class="menu-actions">
+              <label class="upgrade-option"><input id="upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Stack random perks · every 5 survival waves / 3 duel rounds</small></span><b aria-hidden="true">ON</b></label>
               <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
               <div class="menu-game-modes" role="group" aria-label="Game modes"><button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button><button id="menu-duel-open" class="primary-btn duel-mode-btn">1 VS 1 DUEL</button></div>
               <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>ONLINE TRANSMISSION</strong><small>Join a squad or return to your last session</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
@@ -85,6 +86,18 @@
         </div>
       </section>
 
+      <section id="upgrade-draft" class="upgrade-draft" aria-labelledby="upgrade-title" hidden>
+        <div class="upgrade-heading"><span class="eyebrow">FIELD UPGRADE // CHOOSE ONE</span><b id="upgrade-countdown">7s</b></div>
+        <h2 id="upgrade-title">ADAPT. SURVIVE. REPEAT.</h2>
+        <p class="upgrade-intro">Permanent for this match. Every upgrade stacks.</p>
+        <div class="upgrade-cards">
+          <button id="upgrade-card-0" class="upgrade-card" type="button"><span class="upgrade-key">1 / A</span><img alt="" /><strong></strong><b class="upgrade-value"></b><span class="upgrade-stat"></span><small class="upgrade-detail"></small></button>
+          <button id="upgrade-card-1" class="upgrade-card" type="button"><span class="upgrade-key">2 / X</span><img alt="" /><strong></strong><b class="upgrade-value"></b><span class="upgrade-stat"></span><small class="upgrade-detail"></small></button>
+        </div>
+        <div class="upgrade-track"><i id="upgrade-timebar"></i></div>
+        <p class="upgrade-hint">Click / tap a card · Keys 1 / 2 · First card at timeout<br />Combat waits for everyone. After choosing, move freely.</p>
+      </section>
+      <div id="upgrade-wait" class="upgrade-wait" role="status" hidden></div>
       <section id="online" class="screen compact-screen" aria-labelledby="online-title">
         <div class="glass dialog online-dialog">
           <div class="frequency-strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
@@ -227,7 +240,7 @@
           <canvas id="radar" width="152" height="152" aria-label="Monster radar; north is up, the arrow shows your heading"></canvas>
 
           <div class="ammo-panel">
-            <span id="weapon-label">SERVICE PISTOL // 9MM</span>
+            <span id="weapon-label">SERVICE PISTOL // 9MM · +10% SPEED</span>
             <div class="ammo-count"><strong id="ammo-label">12</strong><i>/</i><b id="reserve-label">72</b></div>
             <span class="grenade-inventory"><img src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20width='24'%20height='24'%20viewBox='0%200%2024%2024'%20fill='none'%20stroke='currentColor'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%20%3e%3ccircle%20cx='11'%20cy='13'%20r='9'%20/%3e%3cpath%20d='M14.35%204.65%2016.3%202.7a2.41%202.41%200%200%201%203.4%200l1.6%201.6a2.4%202.4%200%200%201%200%203.4l-1.95%201.95'%20/%3e%3cpath%20d='m22%202-1.5%201.5'%20/%3e%3c/svg%3e" alt="Grenades" /><b id="grenade-count">2</b><kbd>G</kbd></span>
             <small id="reload-label">SEMI-AUTOMATIC</small>

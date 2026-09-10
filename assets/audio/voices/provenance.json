@@ -1,0 +1,125 @@
+[
+  {
+    "file": "lis-hurt-1.wav",
+    "sourceFile": "female-hurt.ogg",
+    "start": 0.3,
+    "duration": 0.86,
+    "sourceSHA256": "80a9fb09203bb8feb065ba15197609b118cbe167c9a2264670a31ee22c384adb"
+  },
+  {
+    "file": "lis-hurt-2.wav",
+    "sourceFile": "female-hurt.ogg",
+    "start": 2.06,
+    "duration": 0.67,
+    "sourceSHA256": "80a9fb09203bb8feb065ba15197609b118cbe167c9a2264670a31ee22c384adb"
+  },
+  {
+    "file": "matt-hurt-1.wav",
+    "sourceFile": "male/slightscream-04.flac",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "63e100536d4821d6b7c13593c8e74732d47ac39dce1ce7078371f19dda5c392e"
+  },
+  {
+    "file": "matt-hurt-2.wav",
+    "sourceFile": "male/slightscream-10.flac",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "27a55ecc5d6927d4ae338876e9f63675dd3caf439ff0f4b9e7b89004e4a748d2"
+  },
+  {
+    "file": "lis-breath-1.wav",
+    "sourceFile": "female-breath.mp3",
+    "start": 0.08,
+    "duration": 1.64,
+    "sourceSHA256": "2181745f0ca317edb08c99ca687693b99a85339378ff4047f877cdaff9f2b048"
+  },
+  {
+    "file": "lis-breath-2.wav",
+    "sourceFile": "female-breath.mp3",
+    "start": 1.72,
+    "duration": 1.65,
+    "sourceSHA256": "2181745f0ca317edb08c99ca687693b99a85339378ff4047f877cdaff9f2b048"
+  },
+  {
+    "file": "matt-breath-1.wav",
+    "sourceFile": "1103.mp3",
+    "start": 0.72,
+    "duration": 1.34,
+    "sourceSHA256": "29df461e8fb60f26f5a6e27d89cd17130deb19c5c88c960b706df4e58f9c2ae9",
+    "sourceURL": "https://bigsoundbank.com/UPLOAD/mp3/1103.mp3",
+    "processing": "75 Hz high-pass, +3 dB at 220 Hz, 4.2 kHz low-pass, 0.92 pitch/rate, mono 24 kHz PCM, peak -3 dB, 12/40 ms fades"
+  },
+  {
+    "file": "matt-breath-2.wav",
+    "sourceFile": "1103.mp3",
+    "start": 2.06,
+    "duration": 1.41,
+    "sourceSHA256": "29df461e8fb60f26f5a6e27d89cd17130deb19c5c88c960b706df4e58f9c2ae9",
+    "sourceURL": "https://bigsoundbank.com/UPLOAD/mp3/1103.mp3",
+    "processing": "75 Hz high-pass, +3 dB at 220 Hz, 4.2 kHz low-pass, 0.92 pitch/rate, mono 24 kHz PCM, peak -3 dB, 12/40 ms fades"
+  },
+  {
+    "file": "undead-idle-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-1.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "e75b804529fd936c299dfd0121e284d38455bc111ae93b1d3c6988bcc74a441d"
+  },
+  {
+    "file": "undead-hurt-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-3.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "c2f6954cc3a67610b229c98c7cea6301cc788192571facef8d8ebd336a799419"
+  },
+  {
+    "file": "undead-attack-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-5.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "43b73bff8f483c0bbc15d9724b7723985b5805d42b767061a519fe8ccd6df752"
+  },
+  {
+    "file": "beast-idle-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-9.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "ffbb1bd3e16bcd89ee9ca4467e5d047bbc53effa13d3fe3889a5ae636c19fc23"
+  },
+  {
+    "file": "beast-hurt-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-10.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "409dd097b89a96770112de1ca0fafcba21386fff4f8818848be1cbcc51d4c165"
+  },
+  {
+    "file": "beast-attack-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-12.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "16ec7099f5047b48d9d86a83dcde58cc3e67d9a05fd205dc8f8c93bafd8d3806"
+  },
+  {
+    "file": "alien-idle-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-13.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "4861d5c0d870c034e2e88af0467d0c8407b2219a632419d4ff1842765e356bfa"
+  },
+  {
+    "file": "alien-hurt-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-15.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "d9a15ef348544aa0c8b2c2dc01abcc5dda13301e935b1fe831becd66246a7795"
+  },
+  {
+    "file": "alien-attack-1.wav",
+    "sourceFile": "monsters/monster_sfx_pack_2/monster-17.wav",
+    "start": 0,
+    "duration": null,
+    "sourceSHA256": "8949eaa585bc489dfa73dce76b6722089719f939fccbd233f3b0345dfc2b6c78"
+  }
+]
