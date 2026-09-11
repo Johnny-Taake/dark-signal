@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-CEZ6MAFY.js"></script>
+    <script type="module" crossorigin src="./assets/index-UIpqEMBB.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-DKNixs-S.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-D_SE-BYz.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -63,7 +63,7 @@
             <p class="mission-summary">Choose an operation, or enter one lobby code to join either mode.</p>
             <div class="mode-cards" role="group" aria-label="Game modes">
               <button id="menu-survival-open" class="mode-card mode-card-survival" type="button"><span class="mode-card-tag">SOLO · UP TO 4 ONLINE</span><strong>SURVIVAL</strong><small>Defend the relay through escalating waves and build a permanent field loadout.</small><b aria-hidden="true">→</b></button>
-              <button id="menu-duel-open" class="mode-card mode-card-duel" type="button"><span class="mode-card-tag">2 OPERATORS · ONLINE</span><strong>1 VS 1 DUEL</strong><small>Fight endless mirrored rounds while monsters and the closing fog pressure both operators.</small><b aria-hidden="true">→</b></button>
+              <button id="menu-duel-open" class="mode-card mode-card-duel" type="button"><span class="mode-card-tag">OFFLINE BOT · 2 OPERATORS ONLINE</span><strong>1 VS 1 DUEL</strong><small>Hunt a tactical local rival or open an online lobby with mirrored rounds and closing fog.</small><b aria-hidden="true">→</b></button>
             </div>
             <button id="menu-join-open" class="menu-action action-online" type="button"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>JOIN LOBBY</strong><small>One code for Survival or Duel · mode detected automatically</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Graphics, controls &amp; sound</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
@@ -101,10 +101,17 @@
             <dl class="mode-rules"><div><dt>ENDLESS ROUNDS</dt><dd>Positions swap and both operators reset after every result.</dd></div><div><dt>FIELD PRESSURE</dt><dd>Four monsters, supply drops and a shrinking final zone prevent stalemates.</dd></div></dl>
           </div>
           <div class="mode-detail-actions">
-            <div class="mode-lobby-head"><span>PRIVATE MATCH</span><strong>OPEN A DUEL SIGNAL</strong><small>Create an endless 1 vs 1 lobby with mirrored starting conditions.</small></div>
+            <div class="mode-lobby-head"><span>LOCAL OR ONLINE</span><strong>CHOOSE YOUR RIVAL</strong><small>Both rivals use the full operator movement and combat kit.</small></div>
             <label class="upgrade-option"><input id="duel-upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Random perk every 3 rounds</small></span><b aria-hidden="true">ON</b></label>
-            <button id="duel-online-open" class="primary-btn duel-launch-btn" type="button">CREATE DUEL LOBBY</button>
-            <p class="mode-footnote">A six-digit lobby code appears after creation.</p>
+            <div class="duel-bot-picker" role="radiogroup" aria-label="Offline rival">
+              <button class="duel-bot-card selected" type="button" role="radio" aria-checked="true" data-duel-bot="matt"><span class="duel-bot-avatar" aria-hidden="true">M</span><span><small>TACTICAL · STANDARD</small><strong>MATT</strong><em>Measured pressure, cover and controlled retreats.</em></span><b>SELECTED</b></button>
+              <button class="duel-bot-card" type="button" role="radio" aria-checked="false" data-duel-bot="lis"><span class="duel-bot-avatar" aria-hidden="true">L</span><span><small>HUNTER · HARD</small><strong>LIS</strong><em>Fast flanks, sharper aim and aggressive re-entry.</em></span><b>SELECT</b></button>
+            </div>
+            <button id="duel-bot-continue" class="primary-btn duel-continue-btn" type="button" hidden>CONTINUE OFFLINE DUEL</button>
+            <p id="duel-bot-save-detail" class="mode-footnote duel-save-detail">A local Duel can be paused and continued on this device.</p>
+            <button id="duel-bot-start" class="primary-btn duel-launch-btn" type="button">DUEL MATT OFFLINE</button>
+            <div class="duel-or"><span>OR</span></div>
+            <button id="duel-online-open" class="menu-action action-online" type="button"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>CREATE ONLINE LOBBY</strong><small>Invite one operator with a six-digit code</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             <button id="duel-back" class="text-btn" type="button">← Back to mode selection</button>
           </div>
         </div>
@@ -118,6 +125,17 @@
           <div class="saved-run-warning"><span>CURRENT SAVE</span><strong id="new-run-save-label">SIGNAL --</strong><small>You can continue it instead, or deliberately start over.</small></div>
           <div class="new-run-actions"><button id="new-run-continue" class="primary-btn" type="button">CONTINUE SAVED RUN</button><button id="new-run-accept" class="danger-btn" type="button">START NEW SURVIVAL</button></div>
           <button id="new-run-cancel" class="text-btn" type="button">← Back to Survival briefing</button>
+        </div>
+      </section>
+
+      <section id="duel-new-confirm" class="screen compact-screen mode-confirm-screen" aria-labelledby="duel-new-confirm-title">
+        <div class="glass dialog new-run-dialog duel-new-dialog">
+          <p class="eyebrow">OFFLINE DUEL SAVE DETECTED</p>
+          <h2 id="duel-new-confirm-title">CUT THE DUEL?</h2>
+          <p>Starting a new offline Duel will replace the match saved on this device. Your separate Survival save is not affected.</p>
+          <div class="saved-run-warning"><span>CURRENT MATCH</span><strong id="duel-new-save-label">ROUND --</strong><small id="duel-new-rival-label">Saved rival: --</small></div>
+          <div class="new-run-actions"><button id="duel-new-continue" class="primary-btn" type="button">CONTINUE SAVED DUEL</button><button id="duel-new-accept" class="danger-btn" type="button">START NEW OFFLINE DUEL</button></div>
+          <button id="duel-new-cancel" class="text-btn" type="button">← Back to Duel briefing</button>
         </div>
       </section>
 

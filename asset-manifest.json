@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-11T08:29:45.583Z",
+  "generatedAt": "2026-09-11T11:47:21.013Z",
   "groups": {
     "boot/menu": {
       "dependsOn": [],
@@ -91,9 +91,17 @@
         "audio.voice.alien-attack-1"
       ]
     },
+    "armored-enemies": {
+      "dependsOn": [
+        "shared-gameplay"
+      ],
+      "assets": [
+        "model.enemy.helmet"
+      ]
+    },
     "survival": {
       "dependsOn": [
-        "shared-gameplay",
+        "armored-enemies",
         "enemy-voices"
       ],
       "assets": [
@@ -113,7 +121,7 @@
     },
     "duel": {
       "dependsOn": [
-        "shared-gameplay",
+        "armored-enemies",
         "enemy-voices"
       ],
       "assets": [
@@ -284,6 +292,17 @@
       "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-mushroom-king.d13be9e9b50e8e75.glb",
       "bytes": 620816,
       "sha256": "d13be9e9b50e8e7507911dda26fc3146c6b75997def98a4bf1fa6cce57c8c913"
+    },
+    {
+      "id": "model.enemy.helmet",
+      "type": "model",
+      "target": [
+        "pickups",
+        "helmet"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-helmet.6d13f19d6dd84a00.glb",
+      "bytes": 128616,
+      "sha256": "6d13f19d6dd84a00e2f424340e16beefff14d02d52cba16214be9085edbb1871"
     },
     {
       "id": "model.vehicle.van",
