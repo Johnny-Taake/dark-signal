@@ -1,0 +1,885 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-11T08:29:45.583Z",
+  "groups": {
+    "boot/menu": {
+      "dependsOn": [],
+      "assets": []
+    },
+    "operator-preview": {
+      "dependsOn": [
+        "boot/menu"
+      ],
+      "assets": [
+        "model.player.matt",
+        "model.player.lis",
+        "model.weapon.pistol",
+        "model.weapon.ar",
+        "model.weapon.shotgun",
+        "model.weapon.optic",
+        "model.weapon.katana"
+      ]
+    },
+    "shared-gameplay": {
+      "dependsOn": [
+        "operator-preview"
+      ],
+      "assets": [
+        "model.vehicle.van",
+        "model.vehicle.flatbed",
+        "model.vehicle.loader",
+        "model.prop.generator",
+        "model.prop.cargo-case",
+        "model.prop.conveyor",
+        "model.prop.metal-stairs",
+        "model.vehicle.sedan",
+        "model.vehicle.suv",
+        "model.vehicle.ambulance",
+        "model.vehicle.garbage",
+        "model.vehicle.pickup",
+        "model.vehicle.truck",
+        "model.building.warehouse",
+        "model.building.workshop",
+        "model.building.factory",
+        "model.building.house",
+        "model.prop.container",
+        "model.prop.dumpster",
+        "model.prop.pallet",
+        "model.prop.planks",
+        "model.prop.bricks",
+        "model.prop.tire",
+        "model.prop.car-door",
+        "model.prop.bumper",
+        "model.prop.box",
+        "model.prop.cone",
+        "model.prop.barrel",
+        "model.pickup.bullets",
+        "model.pickup.shotgun-shells",
+        "model.pickup.grenade",
+        "model.pickup.armor",
+        "audio.weapon.pump-back",
+        "audio.weapon.pump-forward",
+        "audio.weapon.pistol-out",
+        "audio.weapon.pistol-in",
+        "audio.weapon.pistol-bolt",
+        "audio.weapon.ar-out",
+        "audio.weapon.ar-in",
+        "audio.weapon.ar-bolt",
+        "audio.weapon.shell-in",
+        "audio.weapon.grenade-explosion",
+        "audio.voice.lis-breath-1",
+        "audio.voice.lis-breath-2",
+        "audio.voice.lis-hurt-1",
+        "audio.voice.lis-hurt-2",
+        "audio.voice.matt-breath-1",
+        "audio.voice.matt-breath-2",
+        "audio.voice.matt-hurt-1",
+        "audio.voice.matt-hurt-2"
+      ]
+    },
+    "enemy-voices": {
+      "dependsOn": [],
+      "assets": [
+        "audio.voice.undead-idle-1",
+        "audio.voice.undead-hurt-1",
+        "audio.voice.undead-attack-1",
+        "audio.voice.beast-idle-1",
+        "audio.voice.beast-hurt-1",
+        "audio.voice.beast-attack-1",
+        "audio.voice.alien-idle-1",
+        "audio.voice.alien-hurt-1",
+        "audio.voice.alien-attack-1"
+      ]
+    },
+    "survival": {
+      "dependsOn": [
+        "shared-gameplay",
+        "enemy-voices"
+      ],
+      "assets": [
+        "model.enemy.shambler",
+        "model.enemy.runner",
+        "model.enemy.brute",
+        "model.enemy.arm",
+        "model.enemy.alien",
+        "model.enemy.blue-demon",
+        "model.enemy.demon",
+        "model.enemy.orc",
+        "model.enemy.orc-skull",
+        "model.enemy.yeti",
+        "model.enemy.blob",
+        "model.enemy.mushroom"
+      ]
+    },
+    "duel": {
+      "dependsOn": [
+        "shared-gameplay",
+        "enemy-voices"
+      ],
+      "assets": [
+        "model.enemy.shambler",
+        "model.enemy.runner",
+        "model.enemy.brute",
+        "model.enemy.arm",
+        "model.enemy.alien",
+        "model.enemy.blue-demon",
+        "model.enemy.orc",
+        "model.enemy.orc-skull",
+        "model.enemy.yeti",
+        "model.enemy.mushroom"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "id": "model.player.matt",
+      "type": "model",
+      "target": [
+        "players",
+        "matt"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/player-matt.a03d30dc5d0c7cfe.gltf",
+      "bytes": 1788924,
+      "sha256": "a03d30dc5d0c7cfe9a221e3841daa084f96db0b1cbcd4991d9eab4908bfc8ba0"
+    },
+    {
+      "id": "model.player.lis",
+      "type": "model",
+      "target": [
+        "players",
+        "lis"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/player-lis.55c6f491232107f0.gltf",
+      "bytes": 1885469,
+      "sha256": "55c6f491232107f08eea0c40373ec6da932d9a65a64f50b210062e4d7ed46776"
+    },
+    {
+      "id": "model.enemy.shambler",
+      "type": "model",
+      "target": [
+        "zombies",
+        "shambler"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/zombie-basic.c6eab64ef87f89cb.gltf",
+      "bytes": 1703033,
+      "sha256": "c6eab64ef87f89cbd6862b59964b20024ca7e329d3d44f72c76fced6c24861c8"
+    },
+    {
+      "id": "model.enemy.runner",
+      "type": "model",
+      "target": [
+        "zombies",
+        "runner"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/zombie-ribcage.3b9ee3e504e34e6b.gltf",
+      "bytes": 443873,
+      "sha256": "3b9ee3e504e34e6b1421076e9c51bc5d6a647350900eb6aa214d0a62491866f3"
+    },
+    {
+      "id": "model.enemy.brute",
+      "type": "model",
+      "target": [
+        "zombies",
+        "brute"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/zombie-chubby.7c65bae6f0c5f775.gltf",
+      "bytes": 1671276,
+      "sha256": "7c65bae6f0c5f7754ca177a7de7658fc0e4c8de7c8aff33a872d7ffff57a423c"
+    },
+    {
+      "id": "model.enemy.arm",
+      "type": "model",
+      "target": [
+        "zombies",
+        "arm"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/zombie-arm.6b43b8e282afce11.gltf",
+      "bytes": 1313936,
+      "sha256": "6b43b8e282afce1129858cd470430d0f891e83ec2604e0684638c3da3e0c25bf"
+    },
+    {
+      "id": "model.enemy.alien",
+      "type": "model",
+      "target": [
+        "zombies",
+        "alien"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-alien.e032f24296ab4077.glb",
+      "bytes": 673408,
+      "sha256": "e032f24296ab40779f00367362b62b665ee1e228b17abf36e9dd4144aef96412"
+    },
+    {
+      "id": "model.enemy.blue-demon",
+      "type": "model",
+      "target": [
+        "zombies",
+        "blueDemon"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-blue-demon.eb19af07094c60c8.glb",
+      "bytes": 604656,
+      "sha256": "eb19af07094c60c852c1869342c2a8c2a0956b10c70bfb39249b04c07bd6e74c"
+    },
+    {
+      "id": "model.enemy.demon",
+      "type": "model",
+      "target": [
+        "zombies",
+        "demon"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-demon.fba1c35d92e8f2d4.glb",
+      "bytes": 225108,
+      "sha256": "fba1c35d92e8f2d44f6377c7f09c6373aae8e1e47b7ed7f55838a0d77f314ba5"
+    },
+    {
+      "id": "model.enemy.orc",
+      "type": "model",
+      "target": [
+        "zombies",
+        "orc"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-orc.b04239cc7727e975.glb",
+      "bytes": 671584,
+      "sha256": "b04239cc7727e975e3dc0c3c783a757ff7a1aa4f57bd87ba0b5c15be74c6d552"
+    },
+    {
+      "id": "model.enemy.orc-skull",
+      "type": "model",
+      "target": [
+        "zombies",
+        "orcSkull"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-orc-skull.f1a0fa6105b4b9f7.glb",
+      "bytes": 676400,
+      "sha256": "f1a0fa6105b4b9f7d8aac3751aca73ee9f34b74cf90249b0121b9781cfd0316f"
+    },
+    {
+      "id": "model.enemy.yeti",
+      "type": "model",
+      "target": [
+        "zombies",
+        "yeti"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-yeti.68b26d4793cd1567.glb",
+      "bytes": 121520,
+      "sha256": "68b26d4793cd1567139a72a009845be1c1f3b09e871653fd254d891bcef69ad9"
+    },
+    {
+      "id": "model.enemy.blob",
+      "type": "model",
+      "target": [
+        "zombies",
+        "blob"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-green-blob.fc68353469e3fe36.glb",
+      "bytes": 87892,
+      "sha256": "fc68353469e3fe36586b7051a39bfdd0a466e48187f57fb39abf3932ca72447d"
+    },
+    {
+      "id": "model.enemy.mushroom",
+      "type": "model",
+      "target": [
+        "zombies",
+        "mushroom"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/enemy-mushroom-king.d13be9e9b50e8e75.glb",
+      "bytes": 620816,
+      "sha256": "d13be9e9b50e8e7507911dda26fc3146c6b75997def98a4bf1fa6cce57c8c913"
+    },
+    {
+      "id": "model.vehicle.van",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "van"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-van.d753c9bb99153c8d.glb",
+      "bytes": 192136,
+      "sha256": "d753c9bb99153c8d489734c9e37ca1c5703bfdd175a3971702b4ec04488fbd7f"
+    },
+    {
+      "id": "model.vehicle.flatbed",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "flatbed"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-flatbed.faae9fcd91332afb.glb",
+      "bytes": 230964,
+      "sha256": "faae9fcd91332afb7673a2f5c6d8fcf9bd8fa22ee8d9e575198dbf76622ce0e3"
+    },
+    {
+      "id": "model.vehicle.loader",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "loader"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-loader.aca636dfdeedbee8.glb",
+      "bytes": 239052,
+      "sha256": "aca636dfdeedbee8d009cf9e2e5d135c60675e88b5f76d64397c4c08309a6d82"
+    },
+    {
+      "id": "model.vehicle.sedan",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "sedan"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-sedan.682753b3ca43a41a.glb",
+      "bytes": 188688,
+      "sha256": "682753b3ca43a41a0a06a5b022b2be97a4eeec6428c12e8dcd1e89ad7f5428b4"
+    },
+    {
+      "id": "model.vehicle.suv",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "suv"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-suv.6460a691548a45ac.glb",
+      "bytes": 224032,
+      "sha256": "6460a691548a45ac71612a1114069f9db01f5784ef325295df4ec0d6fb1ff449"
+    },
+    {
+      "id": "model.vehicle.ambulance",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "ambulance"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-ambulance.1241bde2a22a1c9f.glb",
+      "bytes": 250104,
+      "sha256": "1241bde2a22a1c9f68fcd1fb89f5e04734e654aac6361569222e009abeea6a52"
+    },
+    {
+      "id": "model.vehicle.garbage",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "garbage"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-garbage.04f8eea34ec4d044.glb",
+      "bytes": 284716,
+      "sha256": "04f8eea34ec4d0448bfbc607e5f56e3d1ce7019aadfd4a57c7c734eb369760ef"
+    },
+    {
+      "id": "model.vehicle.pickup",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "pickup"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-pickup.b0f522dc1fbc8daa.gltf",
+      "bytes": 365234,
+      "sha256": "b0f522dc1fbc8daafb4df1a7e86d9d7df087c04b06a012f05d48a49b0a99655a"
+    },
+    {
+      "id": "model.vehicle.truck",
+      "type": "model",
+      "target": [
+        "vehicles",
+        "truck"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/vehicle-truck.44465d831e9220a7.gltf",
+      "bytes": 437074,
+      "sha256": "44465d831e9220a7449a9e65fb277f0920d54588b6e9c610f7fdfda6e476456a"
+    },
+    {
+      "id": "model.building.warehouse",
+      "type": "model",
+      "target": [
+        "buildings",
+        "warehouse"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/building-warehouse.1cf878b9d4102011.glb",
+      "bytes": 193340,
+      "sha256": "1cf878b9d4102011534b0fe799423ca42374dc849b5c66c2ed92e2eb226350a1"
+    },
+    {
+      "id": "model.building.workshop",
+      "type": "model",
+      "target": [
+        "buildings",
+        "workshop"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/building-workshop.ec8eff7b323afd54.glb",
+      "bytes": 191868,
+      "sha256": "ec8eff7b323afd54a0e9cbb12ed054e346b8ad4726c110c16c07afd3f5303f89"
+    },
+    {
+      "id": "model.building.factory",
+      "type": "model",
+      "target": [
+        "buildings",
+        "factory"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/building-factory.255099a2ab7c8771.glb",
+      "bytes": 122960,
+      "sha256": "255099a2ab7c877188eba7ab389600e855e155b17fdbeae06292189d4d04999c"
+    },
+    {
+      "id": "model.building.house",
+      "type": "model",
+      "target": [
+        "buildings",
+        "house"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/building-house.4c6a37fcffd70ba9.glb",
+      "bytes": 162444,
+      "sha256": "4c6a37fcffd70ba949f4b8d97b2beb3db24e227b5e21e3663d2fc683036b6f48"
+    },
+    {
+      "id": "model.prop.generator",
+      "type": "model",
+      "target": [
+        "environment",
+        "generator"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-generator.e90babc1844cdd0c.glb",
+      "bytes": 45600,
+      "sha256": "e90babc1844cdd0c32c7ccdf0a714f9053f4102bf891563e6ecc83cee21fa328"
+    },
+    {
+      "id": "model.prop.cargo-case",
+      "type": "model",
+      "target": [
+        "environment",
+        "cargoCase"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-cargo-case.9eafa42f1fbff668.glb",
+      "bytes": 23272,
+      "sha256": "9eafa42f1fbff6680f0aa7d67a77f83c5473ff953a4ee27219ac73877d890a52"
+    },
+    {
+      "id": "model.prop.conveyor",
+      "type": "model",
+      "target": [
+        "environment",
+        "conveyor"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-conveyor.95506de5bfc712e2.glb",
+      "bytes": 39376,
+      "sha256": "95506de5bfc712e272b99dcbd8fb57b76a298225c55baba259161e51f5e9befb"
+    },
+    {
+      "id": "model.prop.metal-stairs",
+      "type": "model",
+      "target": [
+        "environment",
+        "metalStairs"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-metal-stairs.bee3c90569483534.glb",
+      "bytes": 82028,
+      "sha256": "bee3c90569483534c7e62ff1f74256f75e92023b814b4278b82adaa90ae48f40"
+    },
+    {
+      "id": "model.prop.container",
+      "type": "model",
+      "target": [
+        "environment",
+        "container"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-container.3340fc744998b7aa.glb",
+      "bytes": 52624,
+      "sha256": "3340fc744998b7aa6ffd0112c8169c7b43fa95adee554e0d866700a624c05fab"
+    },
+    {
+      "id": "model.prop.dumpster",
+      "type": "model",
+      "target": [
+        "environment",
+        "dumpster"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-dumpster.7e09bd2359827521.glb",
+      "bytes": 31272,
+      "sha256": "7e09bd2359827521e2f6eac1532767fbba0cf54b233bf604c0f54e2893127dc7"
+    },
+    {
+      "id": "model.prop.pallet",
+      "type": "model",
+      "target": [
+        "environment",
+        "pallet"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-pallet.016b652acdd1666a.glb",
+      "bytes": 16756,
+      "sha256": "016b652acdd1666adecb84bce03010ab7ef5f4a892e9f0cadc94bea2e92d45c3"
+    },
+    {
+      "id": "model.prop.planks",
+      "type": "model",
+      "target": [
+        "environment",
+        "planks"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-planks.98bd7b11802e81da.glb",
+      "bytes": 12172,
+      "sha256": "98bd7b11802e81daa83aa6a7de757b9975338da29be8628c8993dfea5383f911"
+    },
+    {
+      "id": "model.prop.bricks",
+      "type": "model",
+      "target": [
+        "environment",
+        "bricks"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-bricks.190b45c1511b4c33.glb",
+      "bytes": 15864,
+      "sha256": "190b45c1511b4c33b27e4c496eecacae20b7dd28b4a248753f0e78b76a162c4c"
+    },
+    {
+      "id": "model.prop.tire",
+      "type": "model",
+      "target": [
+        "environment",
+        "tire"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-tire.d951cb31aff7d15e.glb",
+      "bytes": 43064,
+      "sha256": "d951cb31aff7d15e76c1034e4a1e3655aa85673260594d811057df3b488968ee"
+    },
+    {
+      "id": "model.prop.car-door",
+      "type": "model",
+      "target": [
+        "environment",
+        "car-door"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-car-door.8d7e5f6a924ef073.glb",
+      "bytes": 23564,
+      "sha256": "8d7e5f6a924ef0731c0810e70c67bb1ba7bdc5066f0e3b3aa9053dc576dd27dd"
+    },
+    {
+      "id": "model.prop.bumper",
+      "type": "model",
+      "target": [
+        "environment",
+        "bumper"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-bumper.dc4d83c1e0f591c6.glb",
+      "bytes": 27824,
+      "sha256": "dc4d83c1e0f591c6ba2dced5b5f1d19081e2e1f12e43a866984f9dc487d60fd8"
+    },
+    {
+      "id": "model.prop.box",
+      "type": "model",
+      "target": [
+        "environment",
+        "box"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-box.932ac6aebbbe579c.glb",
+      "bytes": 30620,
+      "sha256": "932ac6aebbbe579c93a236ff45bc1cf23d3822c63b193b85cfd375319d7b799a"
+    },
+    {
+      "id": "model.prop.cone",
+      "type": "model",
+      "target": [
+        "environment",
+        "cone"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/prop-cone.18afc5d5c636f959.glb",
+      "bytes": 33204,
+      "sha256": "18afc5d5c636f95956d9559054108bc493e6035a17caccd1173122ffd905a20a"
+    },
+    {
+      "id": "model.prop.barrel",
+      "type": "model",
+      "target": [
+        "environment",
+        "barrel"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/barrel.c05a1b4e43c4779e.gltf",
+      "bytes": 56129,
+      "sha256": "c05a1b4e43c4779e3d0311d02cb5eb735d6ede9c629d41b25e46f73f0b36b096"
+    },
+    {
+      "id": "model.pickup.bullets",
+      "type": "model",
+      "target": [
+        "pickups",
+        "bullets"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/pickup-bullets.1fe1e89414b03022.glb",
+      "bytes": 32004,
+      "sha256": "1fe1e89414b03022439d7b9bcfbc571a08ea6d0ac8fca71be1f164ac9e7cebbc"
+    },
+    {
+      "id": "model.pickup.shotgun-shells",
+      "type": "model",
+      "target": [
+        "pickups",
+        "shotgunShells"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/pickup-shotgun-shells.047e9ccc49194235.glb",
+      "bytes": 12552,
+      "sha256": "047e9ccc491942350c8d6e4aa2ba344b640bdfa81f6e4b230b17cfac391833b1"
+    },
+    {
+      "id": "model.pickup.grenade",
+      "type": "model",
+      "target": [
+        "pickups",
+        "grenade"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/pickup-grenade.cdc6ab1dac7462cf.glb",
+      "bytes": 32908,
+      "sha256": "cdc6ab1dac7462cfd19dd053a100558e6d0d5f27a24000741964605e3d1969c3"
+    },
+    {
+      "id": "model.pickup.armor",
+      "type": "model",
+      "target": [
+        "pickups",
+        "armor"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/pickup-armor.f6237a6bb033adcc.glb",
+      "bytes": 790980,
+      "sha256": "f6237a6bb033adccbba0e19745ecf90dab4616bb5fdb0c4fac2d4b09f3e6beed"
+    },
+    {
+      "id": "model.weapon.pistol",
+      "type": "model",
+      "target": [
+        "weapon",
+        "pistol"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/pistol.29b0b12467be7d11.gltf",
+      "bytes": 90255,
+      "sha256": "29b0b12467be7d11c9deb8d08867d6de61222aa86db8fe5c0cc57fdbeaf11ec3"
+    },
+    {
+      "id": "model.weapon.ar",
+      "type": "model",
+      "target": [
+        "weapon",
+        "ar"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/rifle.7059cf5ae3e078f5.gltf",
+      "bytes": 140144,
+      "sha256": "7059cf5ae3e078f5ffa4dca42abf109d6f6926fe82818f9badfa3c23e41ce8a9"
+    },
+    {
+      "id": "model.weapon.shotgun",
+      "type": "model",
+      "target": [
+        "weapon",
+        "shotgun"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/weapon-shotgun-pump.128a0075192f8258.glb",
+      "bytes": 55352,
+      "sha256": "128a0075192f82582e2e2acc363108cabcb32335086f16b1fa2f5e1186b2ff43"
+    },
+    {
+      "id": "model.weapon.optic",
+      "type": "model",
+      "target": [
+        "weapon",
+        "optic"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/reflex-sight.156e683b18514323.glb",
+      "bytes": 23308,
+      "sha256": "156e683b185143230b94a609fe3e0082608a73054f68006d929f1fc9045c2baa"
+    },
+    {
+      "id": "model.weapon.katana",
+      "type": "model",
+      "target": [
+        "weapon",
+        "katana"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/models/katana.8f9bd9fccabc15ab.glb",
+      "bytes": 78636,
+      "sha256": "8f9bd9fccabc15ab3cb72090b4edc57f1ea166698507a0a15b065ff864f25dd3"
+    },
+    {
+      "id": "audio.weapon.pump-back",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/pump-back.cbd35d7a9b4e7594.wav",
+      "bytes": 9206,
+      "sha256": "cbd35d7a9b4e7594bf3651b4328cb84d65341fdba6730ed76b03fb0e93a6e4ce"
+    },
+    {
+      "id": "audio.weapon.pump-forward",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/pump-forward.3a5cdb961dc21946.wav",
+      "bytes": 12426,
+      "sha256": "3a5cdb961dc219467247ce8679d429a79c91959ca503ced1c728b8ad5fc29b27"
+    },
+    {
+      "id": "audio.weapon.pistol-out",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/pistol-out.a91ca760954550d2.wav",
+      "bytes": 8016,
+      "sha256": "a91ca760954550d26ca9b6f6e4c07594942ceb5e688ea06f01ac7ff209ac64e1"
+    },
+    {
+      "id": "audio.weapon.pistol-in",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/pistol-in.267fb59630b8abc1.wav",
+      "bytes": 12426,
+      "sha256": "267fb59630b8abc16a2a67d2e61bb7e942db68736b3402c9fa84a8f8fd25ad7a"
+    },
+    {
+      "id": "audio.weapon.pistol-bolt",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/pistol-bolt.4aecc3ea77f66789.wav",
+      "bytes": 17718,
+      "sha256": "4aecc3ea77f66789592abb769c6f665f7815f53ce5e14894e9f6796fcd42775d"
+    },
+    {
+      "id": "audio.weapon.ar-out",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/ar-out.5f62070a3d65642c.wav",
+      "bytes": 13308,
+      "sha256": "5f62070a3d65642ca3535a7cef8bad8b33ff3d7c4c950045c89be9b2a8fe311a"
+    },
+    {
+      "id": "audio.weapon.ar-in",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/ar-in.10641ea0ffcfe24a.wav",
+      "bytes": 7134,
+      "sha256": "10641ea0ffcfe24a6c434d3bca788463f047c3a5994b71007681a3f3f8dae03f"
+    },
+    {
+      "id": "audio.weapon.ar-bolt",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/ar-bolt.aea47004ed0173ab.wav",
+      "bytes": 14190,
+      "sha256": "aea47004ed0173abd8b644ac5e1a8bc8a818faed3aef308693f64c45a894efce"
+    },
+    {
+      "id": "audio.weapon.shell-in",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/shell-in.321e3aee57ebd449.wav",
+      "bytes": 17718,
+      "sha256": "321e3aee57ebd44927392cf01154c5e50e95db021b7f0ec470e66cc45317ef8d"
+    },
+    {
+      "id": "audio.weapon.grenade-explosion",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/grenade-explosion.4d10310ff3027af5.wav",
+      "bytes": 76878,
+      "sha256": "4d10310ff3027af56d5a9efe29fe1f3a0f5634a5264ac189365efdf58a641481"
+    },
+    {
+      "id": "audio.voice.lis-breath-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/lis-breath-1.fcc21654cc22230e.wav",
+      "bytes": 78798,
+      "sha256": "fcc21654cc22230e56b9ab5822a87f27384dcff512808575b1ef1a3beda76d1a"
+    },
+    {
+      "id": "audio.voice.lis-breath-2",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/lis-breath-2.8cbc7ffd7ce15eda.wav",
+      "bytes": 79278,
+      "sha256": "8cbc7ffd7ce15edab2678d236d07352ea5f9d04694fe95d9d8cb2961e09f71d2"
+    },
+    {
+      "id": "audio.voice.lis-hurt-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/lis-hurt-1.4f1f386e5c6efb79.wav",
+      "bytes": 41358,
+      "sha256": "4f1f386e5c6efb795c879ec687b8ae12e6dda36abf1add1cf9cf0db0f029736a"
+    },
+    {
+      "id": "audio.voice.lis-hurt-2",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/lis-hurt-2.f251b21ceea92c2d.wav",
+      "bytes": 32238,
+      "sha256": "f251b21ceea92c2dd58e23e27efe35caea563793c1b0644ea5d5763b47ff58f7"
+    },
+    {
+      "id": "audio.voice.matt-breath-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/matt-breath-1.7857cc84ae5d02be.wav",
+      "bytes": 69992,
+      "sha256": "7857cc84ae5d02bedbb7e490a18820926f2c7d08dce4000b17c654e2f7ef78b6"
+    },
+    {
+      "id": "audio.voice.matt-breath-2",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/matt-breath-2.b306914fd6755ff3.wav",
+      "bytes": 73644,
+      "sha256": "b306914fd6755ff323e2fe48a79c1646e5f69e0be539c286747190c7d3f698ce"
+    },
+    {
+      "id": "audio.voice.matt-hurt-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/matt-hurt-1.96de1578e1eefcc5.wav",
+      "bytes": 26556,
+      "sha256": "96de1578e1eefcc53e671f4ab35995dc16ea621ad2e3777e8ed2950b563d0334"
+    },
+    {
+      "id": "audio.voice.matt-hurt-2",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/matt-hurt-2.08543be39acf9a93.wav",
+      "bytes": 34040,
+      "sha256": "08543be39acf9a9366818320082d492f12b2e8ce9b7f2aa3150a326f825ea4da"
+    },
+    {
+      "id": "audio.voice.undead-idle-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/undead-idle-1.774fafcb63efbcb5.wav",
+      "bytes": 46190,
+      "sha256": "774fafcb63efbcb54db40148569606cf2aa184c89095ab65c0c127da2a61f0d3"
+    },
+    {
+      "id": "audio.voice.undead-hurt-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/undead-hurt-1.46dc07d0359b284b.wav",
+      "bytes": 19352,
+      "sha256": "46dc07d0359b284bee4d8713df547376ab420ab74e677efc470286b400054e32"
+    },
+    {
+      "id": "audio.voice.undead-attack-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/undead-attack-1.17e327e50a237a22.wav",
+      "bytes": 18702,
+      "sha256": "17e327e50a237a22bc2ea872375378c8b2e6aa6e2971c02fc501fbfcac266c05"
+    },
+    {
+      "id": "audio.voice.beast-idle-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/beast-idle-1.0746fdfe4d1fe33b.wav",
+      "bytes": 23880,
+      "sha256": "0746fdfe4d1fe33b563e2f48e53c840a242a8a7e71506aabbbeb3cd1846e4622"
+    },
+    {
+      "id": "audio.voice.beast-hurt-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/beast-hurt-1.a41d5fc28b23f559.wav",
+      "bytes": 17580,
+      "sha256": "a41d5fc28b23f559ef0491c7faa51d4d6c156b32e282e14e1ac989dcb02e01cb"
+    },
+    {
+      "id": "audio.voice.beast-attack-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/beast-attack-1.e178f2ecbedccae4.wav",
+      "bytes": 23856,
+      "sha256": "e178f2ecbedccae4d539ce2c30884e4bb17ce4d1c448f99f9fce65c999f28a4a"
+    },
+    {
+      "id": "audio.voice.alien-idle-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/alien-idle-1.d3500d9736dadf7d.wav",
+      "bytes": 25310,
+      "sha256": "d3500d9736dadf7db5dae8256e5c4ae0239b60be3396ad89de680fba560bc3da"
+    },
+    {
+      "id": "audio.voice.alien-hurt-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/alien-hurt-1.4f306231da5f4e30.wav",
+      "bytes": 19634,
+      "sha256": "4f306231da5f4e30a0b4e8f6a9aecbbc03ef0b997b26fdded53f61b109b51fab"
+    },
+    {
+      "id": "audio.voice.alien-attack-1",
+      "type": "audio",
+      "url": "https://akbalans.ru/assets-api/dark-signal/audio/voices/alien-attack-1.6d2c5f35ed4cf0e4.wav",
+      "bytes": 16488,
+      "sha256": "6d2c5f35ed4cf0e41bc9891e94a3222d424e75ba850110368c848e747402f892"
+    }
+  ]
+}

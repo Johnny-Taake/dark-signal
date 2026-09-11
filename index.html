@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-DTKELYZ2.js"></script>
+    <script type="module" crossorigin src="./assets/index-CEZ6MAFY.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CIjj2qgE.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-DKNixs-S.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -26,12 +26,14 @@
         <p class="eyebrow">EMERGENCY RELAY 06</p>
         <h1>DARK<br /><span>SIGNAL</span></h1>
         <p id="loading-status">Opening emergency frequency…</p>
+        <div id="loading-progress" role="progressbar" aria-label="Asset loading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+        <div id="loading-actions" hidden><button id="loading-retry" class="primary-btn" type="button">RETRY DOWNLOAD</button><button id="loading-cancel" class="text-btn" type="button">BACK</button></div>
       </section>
 
       <section id="menu" class="screen" aria-labelledby="title">
         <div class="menu-grid">
           <div class="title-block">
-            <p class="eyebrow menu-edition">BIRCH COUNTY · DAY 19 <span class="testing-badge">PLAYTEST</span></p>
+            <p class="eyebrow menu-edition">BIRCH COUNTY · DAY <span id="project-day">1</span> <span class="testing-badge">PLAYTEST</span></p>
             <h1 id="title">DARK<br /><span>SIGNAL</span></h1>
             <p class="tagline">Every call for help is heard by more than the living.</p>
             <aside id="platform-notice" role="note" aria-labelledby="platform-notice-title">
@@ -56,18 +58,66 @@
               <span><b>HOLD GRENADE</b> aim; release to throw</span>
             </div>
           </div>
-          <div class="briefing glass">
-            <p class="stamp">“LONG CALL” PROTOCOL</p>
-            <p class="mission-summary">Hold the relay against attacking monsters. Each transmission draws more. Between pulses, the emergency unit supplies ammunition. In a squad, fallen operators respawn after 10 seconds while a teammate survives. If everyone falls, the transmission ends; the host restarts or returns the whole squad to the menu.</p>
-            <div class="menu-actions">
-              <label class="upgrade-option"><input id="upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Stack random perks · every 5 survival waves / 3 duel rounds</small></span><b aria-hidden="true">ON</b></label>
-              <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
-              <div class="menu-game-modes" role="group" aria-label="Game modes"><button id="start-btn" class="primary-btn">BEGIN NEW TRANSMISSION</button><button id="menu-duel-open" class="primary-btn duel-mode-btn">1 VS 1 DUEL</button></div>
-              <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>ONLINE TRANSMISSION</strong><small>Join a squad or return to your last session</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
-              <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Graphics &amp; controls</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+          <div class="briefing mode-hub glass">
+            <p class="stamp">SELECT OPERATION</p>
+            <p class="mission-summary">Choose an operation, or enter one lobby code to join either mode.</p>
+            <div class="mode-cards" role="group" aria-label="Game modes">
+              <button id="menu-survival-open" class="mode-card mode-card-survival" type="button"><span class="mode-card-tag">SOLO · UP TO 4 ONLINE</span><strong>SURVIVAL</strong><small>Defend the relay through escalating waves and build a permanent field loadout.</small><b aria-hidden="true">→</b></button>
+              <button id="menu-duel-open" class="mode-card mode-card-duel" type="button"><span class="mode-card-tag">2 OPERATORS · ONLINE</span><strong>1 VS 1 DUEL</strong><small>Fight endless mirrored rounds while monsters and the closing fog pressure both operators.</small><b aria-hidden="true">→</b></button>
             </div>
+            <button id="menu-join-open" class="menu-action action-online" type="button"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>JOIN LOBBY</strong><small>One code for Survival or Duel · mode detected automatically</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            <button id="menu-settings-open" class="menu-action action-settings"><span class="action-symbol" aria-hidden="true">⚙</span><span class="action-copy"><strong>SETTINGS</strong><small>Graphics, controls &amp; sound</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             <p id="best-score" class="best-score"></p>
           </div>
+        </div>
+      </section>
+
+      <section id="survival-mode" class="screen compact-screen mode-detail-screen" aria-labelledby="survival-mode-title">
+        <div class="glass dialog mode-detail-dialog survival-detail" data-signal="01">
+          <div class="mode-detail-copy">
+            <div class="mode-protocol"><p class="eyebrow">“LONG CALL” PROTOCOL</p><span>01 / SURVIVAL</span></div>
+            <h2 id="survival-mode-title">SURVIVAL</h2>
+            <p>Hold the relay against escalating monster waves. Emergency drops arrive between pulses; every fifth wave can add a permanent upgrade for the current run.</p>
+            <dl class="mode-rules"><div><dt>SOLO</dt><dd>Pause freely and continue from a local save.</dd></div><div><dt>CO-OP</dt><dd>Up to four operators. Fallen allies return while one teammate survives.</dd></div></dl>
+          </div>
+          <div class="mode-detail-actions">
+            <div class="mode-lobby-head"><span>ONLINE DEPLOYMENT</span><strong>OPEN A CO-OP SIGNAL</strong><small>Create a fresh Survival lobby for up to four operators.</small></div>
+            <label class="upgrade-option"><input id="upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Random perk every 5 waves</small></span><b aria-hidden="true">ON</b></label>
+            <button id="continue-btn" class="primary-btn continue-btn" hidden>CONTINUE TRANSMISSION</button>
+            <button id="start-btn" class="primary-btn">BEGIN SOLO TRANSMISSION</button>
+            <button id="menu-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>CREATE CO-OP LOBBY</strong><small>Start a new online Survival transmission</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+            <p class="mode-footnote">A six-digit lobby code appears after creation.</p>
+            <button id="survival-back" class="text-btn" type="button">← Back to mode selection</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="duel-mode" class="screen compact-screen mode-detail-screen" aria-labelledby="duel-mode-title">
+        <div class="glass dialog mode-detail-dialog duel-detail" data-signal="02">
+          <div class="mode-detail-copy">
+            <div class="mode-protocol"><p class="eyebrow">“CROSSED SIGNALS” PROTOCOL</p><span>02 / DUEL</span></div>
+            <h2 id="duel-mode-title">1 VS 1 DUEL</h2>
+            <p>Two operators enter with equal loadouts. Eliminate your opponent to take the round while central monsters guard supplies and the boundary fog closes in.</p>
+            <dl class="mode-rules"><div><dt>ENDLESS ROUNDS</dt><dd>Positions swap and both operators reset after every result.</dd></div><div><dt>FIELD PRESSURE</dt><dd>Four monsters, supply drops and a shrinking final zone prevent stalemates.</dd></div></dl>
+          </div>
+          <div class="mode-detail-actions">
+            <div class="mode-lobby-head"><span>PRIVATE MATCH</span><strong>OPEN A DUEL SIGNAL</strong><small>Create an endless 1 vs 1 lobby with mirrored starting conditions.</small></div>
+            <label class="upgrade-option"><input id="duel-upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Random perk every 3 rounds</small></span><b aria-hidden="true">ON</b></label>
+            <button id="duel-online-open" class="primary-btn duel-launch-btn" type="button">CREATE DUEL LOBBY</button>
+            <p class="mode-footnote">A six-digit lobby code appears after creation.</p>
+            <button id="duel-back" class="text-btn" type="button">← Back to mode selection</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="new-run-confirm" class="screen compact-screen mode-confirm-screen" aria-labelledby="new-run-confirm-title">
+        <div class="glass dialog new-run-dialog">
+          <p class="eyebrow">SAVED TRANSMISSION DETECTED</p>
+          <h2 id="new-run-confirm-title">BREAK THE SIGNAL?</h2>
+          <p>Starting a new solo Survival run will replace the transmission saved on this device.</p>
+          <div class="saved-run-warning"><span>CURRENT SAVE</span><strong id="new-run-save-label">SIGNAL --</strong><small>You can continue it instead, or deliberately start over.</small></div>
+          <div class="new-run-actions"><button id="new-run-continue" class="primary-btn" type="button">CONTINUE SAVED RUN</button><button id="new-run-accept" class="danger-btn" type="button">START NEW SURVIVAL</button></div>
+          <button id="new-run-cancel" class="text-btn" type="button">← Back to Survival briefing</button>
         </div>
       </section>
 
@@ -76,7 +126,7 @@
           <p class="eyebrow">TRANSMISSION SUSPENDED</p>
           <h2 id="pause-title">DEAD AIR</h2>
           <p>The carrier is holding. Return when you are ready.</p>
-          <div id="pause-online-room" class="pause-room-code" hidden><span>ROOM CODE</span><button id="pause-online-copy" type="button" aria-label="Copy room code"><strong id="pause-online-code">------</strong><small>Copy code</small></button></div>
+          <div id="pause-online-room" class="pause-room-code" hidden><span>LOBBY CODE</span><button id="pause-online-copy" type="button" aria-label="Copy lobby code"><strong id="pause-online-code">------</strong><small>Copy code</small></button></div>
           <div class="pause-actions">
             <button id="resume-btn" class="menu-action action-resume"><span class="action-symbol" aria-hidden="true">▷</span><span class="action-copy"><strong>CONTINUE</strong><small>Return to the signal</small></span><span class="action-arrow" aria-hidden="true">→</span></button>
             <button id="pause-online-open" class="menu-action action-online"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>MAKE GAME ONLINE</strong><small>Open a private squad frequency</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
@@ -105,21 +155,21 @@
           <h2 id="online-title">OPEN FREQUENCY</h2>
           <p class="online-intro">A light in the static. Up to four operators, one transmission.</p>
           <form id="online-host-form" class="frequency-form">
-            <label id="online-host-label">CREATE A ROOM</label>
+            <label id="online-host-label">CREATE A LOBBY</label>
             <label id="online-password-label" for="online-password">HOST ACCESS PASSWORD</label>
             <div><input id="online-password" type="password" maxlength="128" autocomplete="off" placeholder="Enter access password" required /><button id="online-host-submit" class="secondary-btn" type="submit">GO ONLINE</button></div>
           </form>
           <form id="online-join-form" class="frequency-form">
-            <label for="online-code">JOIN A FREQUENCY</label>
-            <div><input id="online-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="6-digit code" required /><button class="secondary-btn" type="submit">JOIN SQUAD</button></div>
+            <label id="online-join-label" for="online-code">ENTER LOBBY CODE</label>
+            <div><input id="online-code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="off" placeholder="6-digit code" aria-describedby="online-status" required /><button id="online-join-submit" class="secondary-btn" type="submit">JOIN LOBBY</button></div>
           </form>
           <div id="online-connected" hidden>
-            <div class="frequency-code"><div><label for="online-room-code">ROOM CODE · SHARE WITH YOUR SQUAD</label><input id="online-room-code" value="------" readonly data-selectable aria-label="Room code" spellcheck="false" /></div><button id="online-copy" type="button" class="secondary-btn">Copy code</button></div>
-            <p id="online-copy-status" class="frequency-note" role="status" aria-live="polite">Share this code to invite another operator.</p>
+            <div class="frequency-code"><div><label for="online-room-code">LOBBY CODE · SHARE TO INVITE</label><input id="online-room-code" value="------" readonly data-selectable aria-label="Lobby code" spellcheck="false" /></div><button id="online-copy" type="button" class="secondary-btn">Copy code</button></div>
+            <p id="online-copy-status" class="frequency-note" role="status" aria-live="polite">Share this code to invite another operator to this mode.</p>
             <ul id="online-players" aria-label="Connected operators"></ul>
             <p id="online-rules" class="frequency-note">Friendly fire: grenades only. The world keeps moving while menus are open.</p>
           </div>
-          <p id="online-status" role="status">Start a solo transmission to host, or enter a friend's room code.</p>
+          <p id="online-status" role="status">Choose an online action.</p>
           <button id="online-rejoin" class="secondary-btn" hidden>REJOIN LAST SESSION</button>
           <div class="online-footer"><button id="online-back" class="text-btn">Back</button><button id="online-solo" class="text-btn" hidden>Continue this run solo</button><button id="online-chat-open" class="text-btn" hidden>Chat</button>
             <button id="online-resume" class="primary-btn" hidden>RESUME TRANSMISSION</button></div>
@@ -132,36 +182,49 @@
         <div class="glass dialog settings-dialog">
           <p class="eyebrow">OPERATOR PREFERENCES</p>
           <h2 id="settings-title">SETTINGS</h2>
-          <label class="setting-toggle" for="graphics-preset"><span>Graphics</span><select id="graphics-preset" aria-describedby="graphics-note"></select></label>
-          <p id="graphics-note" class="control-note">auto keeps the original device settings. Lower presets improve performance; higher presets sharpen the image and shadows. Applies immediately.</p>
-          <div id="telegram-display-settings" hidden>
-            <button id="telegram-fullscreen" class="secondary-btn" type="button">Enter fullscreen</button>
-            <p id="telegram-mouse-note" class="control-note" hidden>Mouse capture is unavailable in this Telegram client. Drag on the game to look, or open it in your browser for full mouse control.</p>
-            <button id="telegram-open-browser" class="text-btn" type="button" hidden>Open in browser</button>
+          <div class="settings-tabs" role="tablist" aria-label="Settings categories"><button id="settings-general-tab" class="settings-tab active" type="button" role="tab" aria-selected="true" aria-controls="settings-general">GENERAL</button><button id="settings-sound-tab" class="settings-tab" type="button" role="tab" aria-selected="false" aria-controls="settings-sound">SOUND</button></div>
+          <div id="settings-general" class="settings-tab-panel" role="tabpanel" aria-labelledby="settings-general-tab">
+            <label class="setting-toggle" for="graphics-preset"><span>Graphics</span><select id="graphics-preset" aria-describedby="graphics-note"></select></label>
+            <p id="graphics-note" class="control-note">auto keeps the original device settings. Lower presets improve performance; higher presets sharpen the image and shadows. Applies immediately.</p>
+            <div id="telegram-display-settings" hidden>
+              <button id="telegram-fullscreen" class="secondary-btn" type="button">Enter fullscreen</button>
+              <p id="telegram-mouse-note" class="control-note" hidden>Mouse capture is unavailable in this Telegram client. Drag on the game to look, or open it in your browser for full mouse control.</p>
+              <button id="telegram-open-browser" class="text-btn" type="button" hidden>Open in browser</button>
+            </div>
+            <div class="operator-customization">
+              <label class="setting-toggle nickname-setting" for="player-nickname"><span>Nickname</span><input id="player-nickname" type="text" maxlength="24" autocomplete="nickname" placeholder="Operator name" data-selectable /></label>
+              <label class="setting-toggle" for="operator-skin"><span>Operator skin</span><select id="operator-skin"></select></label>
+              <canvas id="operator-preview" tabindex="0" role="img" aria-label="Operator preview. Drag or use arrow keys to rotate."></canvas>
+              <div class="preview-caption"><span>Drag to rotate</span><label for="preview-weapon">Preview weapon <select id="preview-weapon"><option value="pistol">Pistol</option><option value="ar">AR</option><option value="shotgun">Shotgun</option><option value="katana">Katana</option></select></label></div>
+            </div>
+            <label class="setting-row desktop-only" for="mouse-sensitivity">Mouse sensitivity <output id="mouse-sensitivity-value">1.00×</output><input id="mouse-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+            <details class="binding-settings desktop-only"><summary>Keyboard &amp; mouse bindings</summary><p>Choose an action, then press a key or mouse button. Esc cancels and always remains available for pause. Conflicting bindings swap.</p><div id="key-bindings"></div><button id="bindings-reset" class="text-btn">Reset bindings</button></details>
+            <details class="gamepad-settings"><summary>Gamepad · experimental</summary>
+              <label class="setting-toggle" for="gamepad-enabled"><span>Enable gamepad</span><input id="gamepad-enabled" type="checkbox" /></label>
+              <label class="setting-toggle" for="gamepad-vibration-enabled"><span>Vibration</span><input id="gamepad-vibration-enabled" type="checkbox" aria-describedby="gamepad-vibration-note" /></label>
+              <p id="gamepad-vibration-note" class="control-note">Weapon and damage feedback while using a gamepad. Requires a controller and browser with rumble support.</p>
+              <label class="setting-row" for="gamepad-sensitivity">Look sensitivity <output id="gamepad-sensitivity-value">1.00×</output><input id="gamepad-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+              <p>Left stick: move · Right stick: look · RT: fire / wide slash · LT: aim / guard · A: jump · B: crouch · X: reload · Y: next weapon · LB: hold grenade, release to throw · RB: bayonet / heavy katana strike (×1.5, single target) · L3: sprint · R3: flashlight · D-pad up: fire mode · D-pad left/right: weapons · Start: pause · Select: squad.</p>
+              <p>Menus: D-pad up/down to focus, left/right to adjust, A to select, B to go back. Enable gamepad above, then connect a standard controller and press a button.</p>
+            </details>
+            <div id="touch-settings" hidden>
+              <label class="setting-toggle" for="vibration-enabled"><span>Vibration</span><input id="vibration-enabled" type="checkbox" aria-describedby="vibration-note" /></label>
+              <p id="vibration-note" class="control-note">Weapon and damage feedback, when supported by your phone and browser.</p>
+              <label class="setting-row" for="touch-sensitivity">Touch sensitivity <output id="touch-sensitivity-value">1.00×</output><input id="touch-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+              <label class="setting-toggle" for="gyro-mode"><span>Gyroscope</span><select id="gyro-mode"><option value="off">Off</option><option value="aim">While aiming</option><option value="always">Always on</option></select></label>
+              <label class="setting-row" for="gyro-sensitivity">Gyroscope sensitivity <output id="gyro-sensitivity-value">1.00×</output><input id="gyro-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
+              <button id="edit-controls" class="secondary-btn">Arrange touch controls</button>
+            </div>
           </div>
-          <div class="operator-customization">
-            <label class="setting-toggle nickname-setting" for="player-nickname"><span>Nickname</span><input id="player-nickname" type="text" maxlength="24" autocomplete="nickname" placeholder="Operator name" data-selectable /></label>
-            <label class="setting-toggle" for="operator-skin"><span>Operator skin</span><select id="operator-skin"></select></label>
-            <canvas id="operator-preview" tabindex="0" role="img" aria-label="Operator preview. Drag or use arrow keys to rotate."></canvas>
-            <div class="preview-caption"><span>Drag to rotate</span><label for="preview-weapon">Preview weapon <select id="preview-weapon"><option value="pistol">Pistol</option><option value="ar">AR</option><option value="shotgun">Shotgun</option><option value="katana">Katana</option></select></label></div>
-          </div>
-          <label class="setting-row desktop-only" for="mouse-sensitivity">Mouse sensitivity <output id="mouse-sensitivity-value">1.00×</output><input id="mouse-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
-          <details class="binding-settings desktop-only"><summary>Keyboard &amp; mouse bindings</summary><p>Choose an action, then press a key or mouse button. Esc cancels and always remains available for pause. Conflicting bindings swap.</p><div id="key-bindings"></div><button id="bindings-reset" class="text-btn">Reset bindings</button></details>
-          <details class="gamepad-settings"><summary>Gamepad · experimental</summary>
-            <label class="setting-toggle" for="gamepad-enabled"><span>Enable gamepad</span><input id="gamepad-enabled" type="checkbox" /></label>
-            <label class="setting-toggle" for="gamepad-vibration-enabled"><span>Vibration</span><input id="gamepad-vibration-enabled" type="checkbox" aria-describedby="gamepad-vibration-note" /></label>
-            <p id="gamepad-vibration-note" class="control-note">Weapon and damage feedback while using a gamepad. Requires a controller and browser with rumble support.</p>
-            <label class="setting-row" for="gamepad-sensitivity">Look sensitivity <output id="gamepad-sensitivity-value">1.00×</output><input id="gamepad-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
-            <p>Left stick: move · Right stick: look · RT: fire / wide slash · LT: aim / guard · A: jump · B: crouch · X: reload · Y: next weapon · LB: hold grenade, release to throw · RB: bayonet / heavy katana strike (×1.5, single target) · L3: sprint · R3: flashlight · D-pad up: fire mode · D-pad left/right: weapons · Start: pause · Select: squad.</p>
-            <p>Menus: D-pad up/down to focus, left/right to adjust, A to select, B to go back. Enable gamepad above, then connect a standard controller and press a button.</p>
-          </details>
-          <div id="touch-settings" hidden>
-            <label class="setting-toggle" for="vibration-enabled"><span>Vibration</span><input id="vibration-enabled" type="checkbox" aria-describedby="vibration-note" /></label>
-            <p id="vibration-note" class="control-note">Weapon and damage feedback, when supported by your phone and browser.</p>
-            <label class="setting-row" for="touch-sensitivity">Touch sensitivity <output id="touch-sensitivity-value">1.00×</output><input id="touch-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
-            <label class="setting-toggle" for="gyro-mode"><span>Gyroscope</span><select id="gyro-mode"><option value="off">Off</option><option value="aim">While aiming</option><option value="always">Always on</option></select></label>
-            <label class="setting-row" for="gyro-sensitivity">Gyroscope sensitivity <output id="gyro-sensitivity-value">1.00×</output><input id="gyro-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
-            <button id="edit-controls" class="secondary-btn">Arrange touch controls</button>
+          <div id="settings-sound" class="settings-tab-panel sound-settings" role="tabpanel" aria-labelledby="settings-sound-tab" hidden>
+            <p class="control-note sound-intro">Every sound family has an independent level. Changes apply immediately; 100% is the designed mix.</p>
+            <label class="setting-row" for="master-volume">Master volume <output id="master-volume-value">100%</output><input id="master-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="system-volume">System &amp; alerts <output id="system-volume-value">100%</output><input id="system-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="player-voice-volume">Operator voice <output id="player-voice-volume-value">100%</output><input id="player-voice-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="monster-voice-volume">Monster voices <output id="monster-voice-volume-value">200%</output><input id="monster-voice-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="gunfire-volume">Gunfire <output id="gunfire-volume-value">100%</output><input id="gunfire-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="weapon-volume">Reloads &amp; weapon handling <output id="weapon-volume-value">100%</output><input id="weapon-volume" type="range" min="0" max="2" step="0.05" /></label>
+            <label class="setting-row" for="combat-volume">Impacts, melee &amp; explosions <output id="combat-volume-value">100%</output><input id="combat-volume" type="range" min="0" max="2" step="0.05" /></label>
           </div>
           <p id="settings-status" class="settings-status" role="status">Preferences are saved on this device.</p>
           <div class="settings-actions"><button id="settings-reset" class="text-btn">Reset preferences</button><button id="settings-back" class="primary-btn">BACK</button></div>
