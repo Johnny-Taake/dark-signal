@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-UIpqEMBB.js"></script>
+    <script type="module" crossorigin src="./assets/index-D9S-F3oD.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-D_SE-BYz.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BGytF40x.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -100,12 +100,13 @@
             <p>Two operators enter with equal loadouts. Eliminate your opponent to take the round while central monsters guard supplies and the boundary fog closes in.</p>
             <dl class="mode-rules"><div><dt>ENDLESS ROUNDS</dt><dd>Positions swap and both operators reset after every result.</dd></div><div><dt>FIELD PRESSURE</dt><dd>Four monsters, supply drops and a shrinking final zone prevent stalemates.</dd></div></dl>
           </div>
-          <div class="mode-detail-actions">
-            <div class="mode-lobby-head"><span>LOCAL OR ONLINE</span><strong>CHOOSE YOUR RIVAL</strong><small>Both rivals use the full operator movement and combat kit.</small></div>
+          <div id="duel-mode-actions" class="mode-detail-actions duel-actions">
+            <div class="mode-lobby-head"><span>LOCAL OR ONLINE</span><strong>CHOOSE YOUR RIVAL</strong><small>All rivals use the full operator movement and combat kit.</small></div>
             <label class="upgrade-option"><input id="duel-upgrade-toggle" type="checkbox" checked /><span><strong>FIELD UPGRADES</strong><small>Random perk every 3 rounds</small></span><b aria-hidden="true">ON</b></label>
-            <div class="duel-bot-picker" role="radiogroup" aria-label="Offline rival">
-              <button class="duel-bot-card selected" type="button" role="radio" aria-checked="true" data-duel-bot="matt"><span class="duel-bot-avatar" aria-hidden="true">M</span><span><small>TACTICAL · STANDARD</small><strong>MATT</strong><em>Measured pressure, cover and controlled retreats.</em></span><b>SELECTED</b></button>
-              <button class="duel-bot-card" type="button" role="radio" aria-checked="false" data-duel-bot="lis"><span class="duel-bot-avatar" aria-hidden="true">L</span><span><small>HUNTER · HARD</small><strong>LIS</strong><em>Fast flanks, sharper aim and aggressive re-entry.</em></span><b>SELECT</b></button>
+            <div id="duel-rival-summary" class="duel-rival-summary" data-rival="matt">
+              <span id="duel-rival-mark" class="duel-rival-mark" aria-hidden="true">M</span>
+              <span class="duel-rival-copy"><small>SELECTED OFFLINE RIVAL · STANDARD</small><strong id="duel-rival-name">MATT</strong><em id="duel-rival-description">Full-power all-rounder with measured pressure and controlled aim.</em></span>
+              <button id="duel-rival-change" class="duel-rival-change" type="button" aria-expanded="false" aria-controls="duel-rival-picker-panel">CHANGE RIVAL <b aria-hidden="true">→</b></button>
             </div>
             <button id="duel-bot-continue" class="primary-btn duel-continue-btn" type="button" hidden>CONTINUE OFFLINE DUEL</button>
             <p id="duel-bot-save-detail" class="mode-footnote duel-save-detail">A local Duel can be paused and continued on this device.</p>
@@ -113,6 +114,24 @@
             <div class="duel-or"><span>OR</span></div>
             <button id="duel-online-open" class="menu-action action-online" type="button"><span class="action-symbol" aria-hidden="true">⌁</span><span class="action-copy"><strong>CREATE ONLINE LOBBY</strong><small>Invite one operator with a six-digit code</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
             <button id="duel-back" class="text-btn" type="button">← Back to mode selection</button>
+            <section id="duel-rival-picker-panel" class="duel-rival-picker-panel" aria-labelledby="duel-rival-picker-title" hidden>
+              <header class="duel-rival-picker-head">
+                <span><small>OFFLINE DUEL</small><strong id="duel-rival-picker-title">SELECT RIVAL</strong></span>
+                <button id="duel-rival-close" class="duel-rival-close" type="button">← BACK</button>
+              </header>
+              <div class="duel-rival-picker-body">
+                <figure class="duel-rival-preview-stage">
+                  <canvas id="duel-rival-preview" tabindex="0" aria-label="Live 3D preview of the highlighted rival"></canvas>
+                  <figcaption><small id="duel-rival-preview-rank">TACTICAL · STANDARD</small><strong id="duel-rival-preview-name">MATT</strong><span>LIVE OPERATOR MODEL</span></figcaption>
+                </figure>
+                <div class="duel-bot-picker" role="radiogroup" aria-label="Offline rival">
+                  <button class="duel-bot-card" type="button" role="radio" aria-checked="false" tabindex="-1" data-duel-bot="baby-matt"><span class="duel-bot-avatar" aria-hidden="true">BM</span><span><small>ROOKIE · EASY</small><strong>BABY MATT</strong><em>Full health and damage. Perfect against monsters, but his aim against you is forgiving.</em></span><b>CHOOSE</b></button>
+                  <button class="duel-bot-card selected" type="button" role="radio" aria-checked="true" tabindex="0" data-duel-bot="matt"><span class="duel-bot-avatar" aria-hidden="true">M</span><span><small>TACTICAL · STANDARD</small><strong>MATT</strong><em>Full-power all-rounder. Tracks you with moderate accuracy and controlled pressure.</em></span><b>SELECTED</b></button>
+                  <button class="duel-bot-card" type="button" role="radio" aria-checked="false" tabindex="-1" data-duel-bot="lis"><span class="duel-bot-avatar" aria-hidden="true">L</span><span><small>HUNTER · HARD</small><strong>LIS</strong><em>Compact silhouette, fast flanks, sharp but fallible aim and aggressive re-entry. The hardest rival.</em></span><b>CHOOSE</b></button>
+                </div>
+              </div>
+              <p class="duel-rival-picker-hint">Focus a rival to inspect the live model. Choosing one returns to the Duel briefing.</p>
+            </section>
           </div>
         </div>
       </section>
