@@ -1,7 +1,13 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-14T20:46:15.198Z",
+  "generatedAt": "2026-09-27T11:32:26.955Z",
   "groups": {
+    "map-dust2": {
+      "dependsOn": [],
+      "assets": [
+        "model.map.dust2"
+      ]
+    },
     "boot/menu": {
       "dependsOn": [],
       "assets": []
@@ -138,6 +144,17 @@
     }
   },
   "resources": [
+    {
+      "id": "model.map.dust2",
+      "type": "model",
+      "target": [
+        "maps",
+        "dust2"
+      ],
+      "url": "https://akbalans.ru/assets-api/dark-signal/maps/dust2.92da592967093108.glb",
+      "bytes": 1502884,
+      "sha256": "92da5929670931087cebbb7493eceedfd38f38af9f5e85cf1761e90ff39f5960"
+    },
     {
       "id": "model.player.matt",
       "type": "model",

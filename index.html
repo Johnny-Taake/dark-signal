@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-n34vFMFF.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/vendor-HWzBI1AM.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-CA2aGJ96.css">
+    <script type="module" crossorigin src="./assets/index-DAXDg0kL.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/vendor-BuqXw6kP.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-DjqvcV2Q.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -61,6 +61,8 @@
           <div class="briefing mode-hub glass">
             <p class="stamp">SELECT OPERATION</p>
             <p class="mission-summary">Choose an operation, or enter one lobby code to join either mode.</p>
+            <div id="map-picker" class="map-picker" role="group" aria-label="Choose map" aria-describedby="map-note"></div>
+            <p id="map-note" class="mode-footnote"></p>
             <div class="mode-cards" role="group" aria-label="Game modes">
               <button id="menu-survival-open" class="mode-card mode-card-survival" type="button"><span class="mode-card-tag">SOLO · UP TO 4 ONLINE</span><strong>SURVIVAL</strong><small>Defend the relay through escalating waves and build a permanent field loadout.</small><b aria-hidden="true">→</b></button>
               <button id="menu-duel-open" class="mode-card mode-card-duel" type="button"><span class="mode-card-tag">OFFLINE BOT · 2 OPERATORS ONLINE</span><strong>1 VS 1 DUEL</strong><small>Hunt a tactical local rival or open an online lobby with mirrored rounds and closing fog.</small><b aria-hidden="true">→</b></button>
@@ -177,6 +179,7 @@
         <div class="upgrade-heading"><span class="eyebrow">FIELD UPGRADE // CHOOSE ONE</span><b id="upgrade-countdown">7s</b></div>
         <h2 id="upgrade-title">ADAPT. SURVIVE. REPEAT.</h2>
         <p class="upgrade-intro">Permanent for this match. Every upgrade stacks.</p>
+        <p id="upgrade-input-hint" role="status" hidden>Release your fingers, then tap an upgrade.</p>
         <div class="upgrade-cards">
           <button id="upgrade-card-0" class="upgrade-card" type="button"><span class="upgrade-key">1 / A</span><img alt="" /><strong></strong><b class="upgrade-value"></b><span class="upgrade-stat"></span><small class="upgrade-detail"></small></button>
           <button id="upgrade-card-1" class="upgrade-card" type="button"><span class="upgrade-key">2 / X</span><img alt="" /><strong></strong><b class="upgrade-value"></b><span class="upgrade-stat"></span><small class="upgrade-detail"></small></button>
@@ -250,7 +253,7 @@
               <label class="setting-row" for="touch-sensitivity">Touch sensitivity <output id="touch-sensitivity-value">1.00×</output><input id="touch-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
               <label class="setting-toggle" for="gyro-mode"><span>Gyroscope</span><select id="gyro-mode"><option value="off">Off</option><option value="aim">While aiming</option><option value="always">Always on</option></select></label>
               <label class="setting-row" for="gyro-sensitivity">Gyroscope sensitivity <output id="gyro-sensitivity-value">1.00×</output><input id="gyro-sensitivity" type="range" min="0.25" max="3" step="0.05" /></label>
-              <button id="edit-controls" class="secondary-btn">Arrange touch controls</button>
+              <button id="edit-controls" class="secondary-btn">Arrange controls & HUD</button>
             </div>
           </div>
           <div id="settings-sound" class="settings-tab-panel sound-settings" role="tabpanel" aria-labelledby="settings-sound-tab" hidden>
@@ -270,7 +273,8 @@
       </section>
       <section id="layout-editor" hidden aria-label="Touch layout editor">
         <div class="glass layout-toolbar">
-          <p id="layout-instruction">Drag a button or joystick to move it. Select to resize.</p>
+          <p id="layout-instruction">Drag a button or HUD element. Select it to change its size.</p>
+          <select id="layout-element" aria-label="Element to edit"></select>
           <label for="control-size"><span id="control-name">Select a control</span><output id="control-size-value">100%</output></label>
           <input id="control-size" type="range" min="75" max="135" value="100" step="5" disabled />
           <div><button id="layout-reset" class="text-btn">Reset layout</button><button id="layout-cancel" class="text-btn">Cancel</button><button id="layout-done" class="secondary-btn">Done</button></div>
