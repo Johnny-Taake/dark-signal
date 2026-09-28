@@ -13,9 +13,9 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="apple-touch-icon" href="./assets/icon-180-7MvsgJB6.png" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23090d0b'/%3E%3Cpath d='M12 42h40M18 34h28M25 26h14M30 18h4' stroke='%23d6ff4b' stroke-width='5'/%3E%3C/svg%3E" />
-    <script type="module" crossorigin src="./assets/index-DAXDg0kL.js"></script>
+    <script type="module" crossorigin src="./assets/index-B6tF0jhB.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/vendor-BuqXw6kP.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-DjqvcV2Q.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BffZKQNq.css">
   </head>
   <body>
     <main id="game" aria-label="DARK SIGNAL — 3D shooter">
@@ -233,7 +233,8 @@
             </div>
             <div class="operator-customization">
               <label class="setting-toggle nickname-setting" for="player-nickname"><span>Nickname</span><input id="player-nickname" type="text" maxlength="24" autocomplete="nickname" placeholder="Operator name" data-selectable /></label>
-              <label class="setting-toggle" for="operator-skin"><span>Operator skin</span><select id="operator-skin"></select></label>
+              <label class="setting-toggle" for="operator-skin"><span>Character</span><select id="operator-skin" aria-describedby="operator-traits"></select></label>
+              <p id="operator-traits" class="control-note" aria-live="polite"></p>
               <canvas id="operator-preview" tabindex="0" role="img" aria-label="Operator preview. Drag or use arrow keys to rotate."></canvas>
               <div class="preview-caption"><span>Drag to rotate</span><label for="preview-weapon">Preview weapon <select id="preview-weapon"><option value="pistol">Pistol</option><option value="ar">AR</option><option value="shotgun">Shotgun</option><option value="katana">Katana</option></select></label></div>
             </div>
